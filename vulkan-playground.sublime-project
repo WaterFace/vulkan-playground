@@ -1,0 +1,16 @@
+{
+	"build_systems":
+	[
+		{
+			"name": "ninja",
+			"shell_cmd": "ninja && bin\\vulkan-playground.exe",
+      "working_dir": "${project_path}",
+		}
+	],
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	]
+}

@@ -1,0 +1,845 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"PROJE",
+				"PROJECT_BINARY_DIR"
+			],
+			[
+				"Projectname",
+				"PROJECT_NAME"
+			],
+			[
+				"Pro",
+				"PROJECT_SOURCE_DIR"
+			],
+			[
+				"include",
+				"include_directories"
+			],
+			[
+				"top",
+				"\\top                                              \tlatex-mathsymbols"
+			],
+			[
+				"water",
+				"water_level"
+			],
+			[
+				"im",
+				"improved_perlin_noise"
+			],
+			[
+				"per",
+				"improved_perlin_noise"
+			],
+			[
+				"moun",
+				"mountain_level"
+			],
+			[
+				"hsv",
+				"hsv_to_rgb"
+			],
+			[
+				"wat",
+				"water_level"
+			],
+			[
+				"wa",
+				"water_level"
+			],
+			[
+				"is",
+				"is_moon"
+			],
+			[
+				"impro",
+				"improved_bump_height"
+			],
+			[
+				"inter",
+				"interpolate_hsv"
+			],
+			[
+				"sea",
+				"season_color"
+			],
+			[
+				"d",
+				"dp_by_dB"
+			],
+			[
+				"bump",
+				"bump_position"
+			],
+			[
+				"f",
+				"f_cubed"
+			],
+			[
+				"rand",
+				"randrange"
+			],
+			[
+				"citeyea",
+				"\\citeyear{key}                                    \tbiblatex"
+			],
+			[
+				"val",
+				"validatePassport2"
+			],
+			[
+				"Data",
+				"DataFolder"
+			],
+			[
+				"png",
+				"gear_close.png"
+			],
+			[
+				"E",
+				"Essay 2/glider.png"
+			],
+			[
+				"sec",
+				"\\section{title}                                   \tlatex-document"
+			],
+			[
+				"operator",
+				"\\DeclareMathOperator{command}{text}               \tamsmath"
+			],
+			[
+				"abstra",
+				"\\begin{abstract}                                  \tlatex-document"
+			],
+			[
+				"nright",
+				"\\nrightarrow                                      \tamssymb"
+			],
+			[
+				"Vert",
+				"\\lVert                                            \tamsmath"
+			],
+			[
+				"new",
+				"\\newpage                                          \tlatex-document"
+			],
+			[
+				"be",
+				"\\begin{}                                          \tlatex-document"
+			],
+			[
+				"grup",
+				"group2"
+			],
+			[
+				"mod",
+				"\\mod{value}                                       \tamsmath"
+			],
+			[
+				"Fi",
+				"Figure_1_Mandelbrot_color_zoomed.png"
+			],
+			[
+				"inclu",
+				"\\includegraphics[options]{name}                   \tlatex-document"
+			],
+			[
+				"supset",
+				"\\supsetneq                                        \tamssymb"
+			],
+			[
+				"times",
+				"\\otimes                                           \tlatex-mathsymbols"
+			],
+			[
+				"empty",
+				"\\emptyset                                         \tlatex-mathsymbols"
+			],
+			[
+				"approx",
+				"\\approxeq                                         \tamssymb"
+			],
+			[
+				"ikar",
+				"ikarosRace"
+			],
+			[
+				"ikaros",
+				"ikarosRace"
+			],
+			[
+				"ik",
+				"ikarosFile"
+			],
+			[
+				"bibl",
+				"\\bibliographystyle{style}                         \tlatex-document"
+			],
+			[
+				"biblo",
+				"\\bibliography{file}                               \tlatex-document"
+			],
+			[
+				"comp",
+				"\\comp{arg}                                        \tlocal"
+			],
+			[
+				"cases",
+				"\\begin{cases}                                     \tamsmath"
+			],
+			[
+				"moset",
+				"mostEfficientUpgrade"
+			],
+			[
+				"most",
+				"mostEfficientUpgrade"
+			],
+			[
+				"level",
+				"levelCap"
+			],
+			[
+				"ramcost",
+				"ramCostMult"
+			],
+			[
+				"base",
+				"ramBaseCost"
+			],
+			[
+				"node",
+				"nodeStats"
+			],
+			[
+				"hacknet",
+				"HacknetNodeMoneyGainPerLevel"
+			],
+			[
+				"Left",
+				"\\Leftrightarrow                                   \tlatex-mathsymbols"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/main.cpp",
+			"settings":
+			{
+				"buffer_size": 71,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "#include <stdio>"
+			}
+		},
+		{
+			"file": "CMakeLists.txt",
+			"settings":
+			{
+				"buffer_size": 351,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "build.ninja",
+			"settings":
+			{
+				"buffer_size": 8333,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "Packages/NinjaBuild/ninja.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				],
+				[
+					"Packages/NinjaBuild/ninja.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/NinjaBuild/ninja.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					""
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Traditional"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"PdfLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"XeLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"LuaLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - PdfLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - XeLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Basic Builder - LuaLaTeX"
+				],
+				[
+					"Packages/LaTeXTools/LaTeX.sublime-build",
+					"Script Builder"
+				]
+			],
+			[
+				"Packages/LaTeXTools/LaTeX.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"build",
+				"Build: New Build System"
+			],
+			[
+				"indent",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"syntax json",
+				"Set Syntax: JSON"
+			],
+			[
+				"packa",
+				"Package Control: Remove Package"
+			],
+			[
+				"byu",
+				"Build: New Build System"
+			],
+			[
+				"glsl",
+				"Set Syntax: GLSL"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"word",
+				"LaTeXWordCount: Word Count"
+			],
+			[
+				"clea",
+				"LaTeXTools: Clear current bibliography cache"
+			],
+			[
+				"latex",
+				"LaTeXWordCount: Word Count"
+			],
+			[
+				"biber",
+				"LaTeXTools: Clear current bibliography cache"
+			],
+			[
+				"buil",
+				"Build With: LaTeX"
+			],
+			[
+				"wor",
+				"LaTeXWordCount: Word Count"
+			],
+			[
+				"tradi",
+				"Build With: LaTeX - Traditional"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Build With: LaTeX - Traditional"
+			],
+			[
+				"clean",
+				"LaTeXTools: Clear document cache"
+			],
+			[
+				"dele",
+				"LaTeXTools: Delete temporary files"
+			],
+			[
+				"delete",
+				"LaTeXTools: Delete temporary files"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 157.0,
+		"history":
+		[
+			"which latexindent"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/dev/vulkan-playground",
+		"/C/dev/vulkan-playground/src"
+	],
+	"file_history":
+	[
+		"/C/dev/vulkan-playground/.sublime-project",
+		"/C/dev/vulkan-playground/CMakeLists.txt",
+		"/C/dev/csc317/computer-graphics-meshes/src/per_corner_normals.cpp",
+		"/C/dev/ninja/CMakeLists.txt",
+		"/C/Games/Steam/steamapps/common/XCom-Enemy-Unknown/XEW/XComGame/Config/DefaultSightlines.ini",
+		"/C/Games/Steam/steamapps/common/XCom-Enemy-Unknown/XEW/XComGame/Config/DefaultMutatorLoader.ini",
+		"/C/Users/Kevin Weckworth/AppData/Local/Temp/7zOC20AE2C6/readme.txt",
+		"/D/Google Drive/School/CSC317/Test 2/Test 2.tex",
+		"/C/Games/Steam/steamapps/common/NGU INDUSTRIES/NGU INDUSTRIES_Data/Plugins/Steamworks.NET.txt",
+		"/C/dev/csc317/computer-graphics-ray-tracing/main.cpp",
+		"/C/dev/csc317/computer-graphics-kinematics/data/robot-arm.json",
+		"/C/dev/ninja/build-cmake/CMakeCache.txt",
+		"/C/dev/csc317/computer-graphics-meshes/src/per_vertex_normals.cpp",
+		"/C/dev/csc317/computer-graphics-meshes/src/vertex_triangle_adjacency.cpp",
+		"/C/dev/csc317/computer-graphics-meshes/src/triangle_area_normal.cpp",
+		"/C/dev/csc317/computer-graphics-meshes/src/per_face_normals.cpp",
+		"/D/Google Drive/School/CSC317/Test 2/sample_latex_file.tex",
+		"/C/Users/Kevin Weckworth/AppData/Local/Temp/7zO881FA33E/readme.txt",
+		"/C/Users/Kevin Weckworth/AppData/Local/Temp/raycolor.cpp",
+		"/C/Users/Kevin Weckworth/AppData/Local/Temp/creative.json",
+		"/C/dev/csc317/computer-graphics-shader-pipeline/src/procedural_color.fs",
+		"/C/dev/csc317/computer-graphics-shader-pipeline/src/improved_perlin_noise.glsl",
+		"/C/dev/csc317/computer-graphics-shader-pipeline/src/tangent.glsl",
+		"/C/dev/csc317/computer-graphics-shader-pipeline/src/bump_position.glsl",
+		"/C/dev/csc317/computer-graphics-shader-pipeline/src/bump_height.glsl",
+		"/C/dev/csc317/computer-graphics-shader-pipeline/src/planet.fs",
+		"/C/dev/csc317/computer-graphics-shader-pipeline/src/bump.fs",
+		"/C/dev/csc317/computer-graphics-kinematics/data/chimpanzee-hand.dmat",
+		"/C/dev/csc317/computer-graphics-kinematics/data/chimpanzee-hand.bf",
+		"/C/dev/csc317/computer-graphics-kinematics/data/chimpanzee-hand.json",
+		"/C/dev/csc317/computer-graphics-shader-pipeline/src/perlin_noise.glsl",
+		"/C/dev/csc317/computer-graphics-shader-pipeline/data/test-07.json",
+		"/C/dev/csc317/computer-graphics-shader-pipeline/src/improved_smooth_step.glsl",
+		"/C/dev/csc317/computer-graphics-shader-pipeline/src/rotate_about_y.glsl",
+		"/C/Users/Kevin Weckworth/Dropbox/clickerHeroSave.txt",
+		"/C/Users/Kevin Weckworth/Dropbox/matterdimensions.txt",
+		"/C/dev/csc317/computer-graphics-meshes/build/sphere.obj",
+		"/C/Users/Kevin Weckworth/Documents/Elder Scrolls Online/live/Logs/Encounter.log",
+		"/C/dev/csc317/computer-graphics-meshes/build/cube.obj",
+		"/C/dev/csc317/computer-graphics-meshes/build/core.dir/Release/write_obj.obj",
+		"/C/dev/csc317/computer-graphics-meshes/build/core.dir/Release/cube.obj",
+		"/D/Google Drive/School/CSC317/computer-graphics-bounding-volume-hierarchy/data/rubber-ducky.obj",
+		"/D/Google Drive/School/CSC317/computer-graphics-ray-tracing (1)/src/Triangle.cpp",
+		"/D/Downloads/code.cpp",
+		"/C/dev/csc317/computer-graphics-meshes/data/bob.obj",
+		"/C/Users/Kevin Weckworth/Dropbox/prestige tree.txt",
+		"/C/dev/csc317/computer-graphics-meshes/build/obj.dir/Release/obj.obj",
+		"/C/dev/csc317/computer-graphics-meshes/build/obj.dir/Release/obj.log",
+		"/C/Users/Kevin Weckworth/Documents/Elder Scrolls Online/live/Logs/Encounter-split-1969-12-31T23-59-59.998Z.log",
+		"/D/Google Drive/School/CSC317/computer-graphics-bounding-volume-hierarchy/intersections.cpp",
+		"/D/Google Drive/School/CSC317/computer-graphics-bounding-volume-hierarchy/include/MeshTriangle.h",
+		"/C/Users/Kevin Weckworth/Dropbox/Realm Grinder Builds.txt",
+		"/D/Google Drive/School/CSC317/computer-graphics-ray-tracing/data/mirror.json",
+		"/D/Google Drive/School/CSC317/computer-graphics-ray-tracing/data/sphere.json",
+		"/D/Google Drive/School/CSC317/computer-graphics-ray-tracing/src/generate_stars.py",
+		"/D/Google Drive/School/CSC317/computer-graphics-ray-tracing/src/creative.json",
+		"/D/Google Drive/School/CSC317/computer-graphics-ray-tracing/data/bunny.json",
+		"/D/Google Drive/School/CSC317/computer-graphics-ray-tracing/data/sphere-small-change.json",
+		"/D/Google Drive/School/CSC317/computer-graphics-ray-tracing/data/sphere-and-plane.json",
+		"/D/Google Drive/School/CSC317/computer-graphics-ray-tracing/data/sphere-large-change.json",
+		"/D/Google Drive/School/CSC317/computer-graphics-ray-tracing/data/triangle.json",
+		"/D/Google Drive/School/CSC317/computer-graphics-ray-tracing/src/first_hit.cpp",
+		"/D/Google Drive/School/CSC317/computer-graphics-ray-casting/data/triangle.json",
+		"/D/Google Drive/School/CSC317/computer-graphics-ray-casting/data/sphere-and-plane.json",
+		"/D/Google Drive/dev/aoc2020/src/18/input.txt",
+		"/D/Google Drive/dev/aoc2020/src/18/18.hs",
+		"/D/Google Drive/School/CSC317/computer-graphics-ray-casting/data/inside-a-sphere.json",
+		"/D/Google Drive/School/CSC317/computer-graphics-raster-images/src/write_ppm.cpp",
+		"/D/Google Drive/School/CSC317/computer-graphics-raster-images/build/reflected.ppm",
+		"/D/Google Drive/School/CSC317/computer-graphics-raster-images/build/rgb.ppm",
+		"/D/Google Drive/School/CSC317/computer-graphics-raster-images/CMakeLists.txt",
+		"/D/Google Drive/School/CDN267/cumulative project/cumulative.tex",
+		"/C/Users/Kevin Weckworth/Dropbox/fe60 save.txt",
+		"/C/Users/Kevin Weckworth/Dropbox/AD NG+++ Save.txt",
+		"/C/Users/Kevin Weckworth/AppData/Local/ModOrganizer/Fallout 4/mods/Buffout 4/F4SE/Plugins/Buffout4.toml",
+		"/C/Users/Kevin Weckworth/Documents/My Games/FalloutNV/Fallout.ini",
+		"/C/Users/Kevin Weckworth/Documents/My Games/FalloutNV/FalloutPrefs.ini",
+		"/C/Users/Kevin Weckworth/Documents/My Games/FalloutNV/FalloutCustom.ini",
+		"/D/Google Drive/School/CSC317/computer-graphics-raster-images/build/CMakeCache.txt",
+		"/C/Users/Kevin Weckworth/Dropbox/realm grinder save.txt",
+		"/C/Users/Kevin Weckworth/AppData/Local/Temp/7zO4D388A55/Readme TTW 3.2.1.txt",
+		"/C/Games/Steam/steamapps/common/Fallout New Vegas/ttw/files/nvse/nvse_config.ini",
+		"/C/Games/Steam/steamapps/common/Fallout New Vegas/ttw/files/YUP credits.txt",
+		"/C/Games/Steam/steamapps/common/Fallout New Vegas/ttw/files/nvse/plugins/jip_nvse.ini",
+		"/C/Games/Steam/steamapps/common/Fallout New Vegas/ttw/files/YUPTTW.txt",
+		"/D/Google Drive/dev/aoc2020/src/17/17.hs",
+		"/D/Google Drive/dev/aoc2020/src/17/input.txt",
+		"/D/Google Drive/dev/aoc2020/src/16/input.txt",
+		"/D/Google Drive/dev/aoc2020/src/16/16.hs",
+		"/D/Google Drive/School/CDN267/cumulative project/reflection.tex",
+		"/D/Google Drive/dev/aoc2020/src/15/input.txt",
+		"/D/Google Drive/dev/aoc2020/src/15/15.hs",
+		"/D/Google Drive/dev/aoc2020/src/14/14.hs",
+		"/D/Google Drive/dev/aoc2020/src/14/input.txt",
+		"/D/Google Drive/dev/aoc2020/src/13/input.txt",
+		"/D/Google Drive/dev/aoc2020/src/13/13.hs",
+		"/D/Google Drive/School/SMC228/term test/term test.tex",
+		"/D/Google Drive/dev/aoc2020/src/12/12.hs",
+		"/C/Games/Cyberpunk 2077/patch_log.txt",
+		"/C/Games/Cyberpunk 2077/patch/VERY IMPORTANT INSTRUCTIONS!!!!!!.txt",
+		"/D/Google Drive/dev/aoc2020/src/12/input.txt",
+		"/D/Google Drive/dev/aoc2020/stack.yaml",
+		"/D/Google Drive/dev/aoc2020/src/4/input.txt",
+		"/D/Google Drive/dev/aoc2020/src/4/4.hs",
+		"/D/Google Drive/dev/aoc2020/src/3/3.hs",
+		"/D/Google Drive/dev/aoc2020/src/4/4test.hs",
+		"/D/Google Drive/dev/aoc2020/src/2/2.hs",
+		"/D/Google Drive/dev/aoc2020/src/3/input.txt",
+		"/D/Google Drive/dev/aoc2020/src/1/Main.hs",
+		"/D/Google Drive/dev/aoc2020/src/2/inputTest.txt",
+		"/D/Google Drive/dev/aoc2020/src/2/input.txt",
+		"/D/Google Drive/School/MAT367/sample_latex_file.tex",
+		"/D/Google Drive/School/PHL354/Assignment 3.tex",
+		"/D/Downloads/Diablo II + LoD/patch/prepatch.log",
+		"/D/Downloads/Diablo II + LoD/serials.txt",
+		"/D/Google Drive/School/SMC228/Midterm.tex",
+		"/D/Google Drive/School/CDN267/reflection.tex",
+		"/D/Google Drive/dev/aoc2020/1/1.hs",
+		"/C/Program Files (x86)/gPodder/lib/python3.8/site-packages/cairo/__init__.pyi",
+		"/C/Games/RPCS3/config.yml",
+		"/C/Users/Kevin Weckworth/Dropbox/Trimps Save P183 Z181.txt",
+		"/C/Users/Kevin Weckworth/Dropbox/Ordinal Markup Save.txt",
+		"/C/Games/Steam/steamapps/common/Monster Hunter World/loader-config.json",
+		"/C/Games/Steam/steamapps/common/Monster Hunter World/config.ini",
+		"/D/Downloads/sieve.json",
+		"/C/Games/MultiMC/instances/Fabric 1.16.3/.minecraft/config/techreborn/misc.json",
+		"/C/Users/Kevin Weckworth/gpodder/src/gpodder/gtkui/main.py",
+		"/C/Users/Kevin Weckworth/Desktop/yourkickstartersucks.xml"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 104.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"gnu",
+			"gcc",
+			"\"bone_id\":",
+			"bone_id\":1,",
+			"12528",
+			"360",
+			"-360",
+			"asylum sanctorium",
+			"asylum",
+			"2266",
+			"ray_intersect",
+			"to",
+			"pos",
+			"reqkeys",
+			"hasreqkeys",
+			"255002731",
+			"max energy",
+			"energy",
+			"storage",
+			"mfe",
+			"urllib",
+			"decode",
+			"fp = self.open(url",
+			"escape",
+			"tempname",
+			"download.py",
+			"levelUpCost",
+			"getMonsterExperience",
+			"level",
+			"getDifficulty",
+			"experience",
+			"normalize",
+			"fromfloat",
+			"bignumber"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"waypoint"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/main.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 71,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								71,
+								71
+							]
+						],
+						"settings":
+						{
+							"auto_name": "#include <stdio>",
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "CMakeLists.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 351,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								306,
+								306
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CMakeEditor/CMakeEditor.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "build.ninja",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8333,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2310,
+								2310
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ninja/ninja.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 648.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 39.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 74.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.latextools":
+	{
+		"height": 126.0
+	},
+	"pinned_build_system": "",
+	"project": "vulkan-playground.sublime-project",
+	"replace":
+	{
+		"height": 70.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 236.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
