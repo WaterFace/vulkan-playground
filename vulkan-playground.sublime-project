@@ -3,7 +3,7 @@
 	[
 		{
 			"name": "ninja",
-			"shell_cmd": "ninja && bin\\vulkan-playground.exe",
+			"shell_cmd": "ninja && \"bin/vulkan-playground.exe\"",
       "working_dir": "${project_path}",
 		}
 	],

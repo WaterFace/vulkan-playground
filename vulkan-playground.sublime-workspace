@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"PROJECT",
+				"PROJECT_NAME"
+			],
+			[
+				"add",
+				"add_dependencies"
+			],
+			[
+				"PROJEC",
+				"PROJECT_NAME"
+			],
+			[
+				"PRojec",
+				"PROJECT_LABEL"
+			],
+			[
 				"PROJE",
 				"PROJECT_BINARY_DIR"
 			],
@@ -231,33 +247,65 @@
 			"file": "src/main.cpp",
 			"settings":
 			{
-				"buffer_size": 71,
+				"buffer_size": 952,
 				"encoding": "UTF-8",
 				"line_ending": "Windows",
 				"name": "#include <stdio>"
 			}
 		},
 		{
-			"file": "CMakeLists.txt",
+			"file": "vulkan-playground.sublime-project",
 			"settings":
 			{
-				"buffer_size": 351,
+				"buffer_size": 196,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "build.ninja",
-			"settings":
-			{
-				"buffer_size": 8333,
 				"line_ending": "Windows"
 			}
 		}
 	],
-	"build_system": "Packages/NinjaBuild/ninja.sublime-build",
+	"build_system": "ninja",
 	"build_system_choices":
 	[
+		[
+			[
+				[
+					"Build with ninja",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Build with ninja",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Ninja",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Ninja",
+				""
+			]
+		],
 		[
 			[
 				[
@@ -341,6 +389,82 @@
 				"Packages/Python/Python.sublime-build",
 				""
 			]
+		],
+		[
+			[
+				[
+					"ninja",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"ninja",
+				""
+			]
+		],
+		[
+			[
+				[
+					"ninja",
+					""
+				],
+				[
+					"ninja",
+					"Run"
+				]
+			],
+			[
+				"ninja",
+				"Run"
+			]
+		],
+		[
+			[
+				[
+					"ninja",
+					""
+				],
+				[
+					"ninja",
+					"run"
+				]
+			],
+			[
+				"ninja",
+				"run"
+			]
+		],
+		[
+			[
+				[
+					"ninja",
+					""
+				],
+				[
+					"ninja",
+					"run"
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"ninja",
+				"run"
+			]
 		]
 	],
 	"build_varint": "",
@@ -351,20 +475,24 @@
 		"selected_items":
 		[
 			[
-				"build",
-				"Build: New Build System"
+				"lsp",
+				"LSP: Enable Language Server Globally"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
 			],
 			[
 				"indent",
 				"Indentation: Reindent Lines"
 			],
 			[
-				"syntax json",
-				"Set Syntax: JSON"
+				"build",
+				"Build With: ninja - run"
 			],
 			[
-				"packa",
-				"Package Control: Remove Package"
+				"syntax json",
+				"Set Syntax: JSON"
 			],
 			[
 				"byu",
@@ -456,13 +584,19 @@
 	},
 	"expanded_folders":
 	[
-		"/C/dev/vulkan-playground",
-		"/C/dev/vulkan-playground/src"
+		"/C/dev/vulkan-playground"
 	],
 	"file_history":
 	[
-		"/C/dev/vulkan-playground/.sublime-project",
+		"/C/dev/vulkan-playground/vulkan-playground.sublime-project",
+		"/C/dev/vulkan-playground/build.ninja",
 		"/C/dev/vulkan-playground/CMakeLists.txt",
+		"/C/dev/vulkan-playground/.git/COMMIT_EDITMSG",
+		"/C/dev/vulkan-playground/glfw/CMakeLists.txt",
+		"/C/dev/vulkan-playground/glfw/README.md",
+		"/C/dev/csc317/computer-graphics-ray-tracing/CMakeLists.txt",
+		"/C/dev/csc317/computer-graphics-meshes/CMakeLists.txt",
+		"/C/dev/vulkan-playground/.sublime-project",
 		"/C/dev/csc317/computer-graphics-meshes/src/per_corner_normals.cpp",
 		"/C/dev/ninja/CMakeLists.txt",
 		"/C/Games/Steam/steamapps/common/XCom-Enemy-Unknown/XEW/XComGame/Config/DefaultSightlines.ini",
@@ -581,14 +715,7 @@
 		"/D/Google Drive/dev/aoc2020/1/1.hs",
 		"/C/Program Files (x86)/gPodder/lib/python3.8/site-packages/cairo/__init__.pyi",
 		"/C/Games/RPCS3/config.yml",
-		"/C/Users/Kevin Weckworth/Dropbox/Trimps Save P183 Z181.txt",
-		"/C/Users/Kevin Weckworth/Dropbox/Ordinal Markup Save.txt",
-		"/C/Games/Steam/steamapps/common/Monster Hunter World/loader-config.json",
-		"/C/Games/Steam/steamapps/common/Monster Hunter World/config.ini",
-		"/D/Downloads/sieve.json",
-		"/C/Games/MultiMC/instances/Fabric 1.16.3/.minecraft/config/techreborn/misc.json",
-		"/C/Users/Kevin Weckworth/gpodder/src/gpodder/gtkui/main.py",
-		"/C/Users/Kevin Weckworth/Desktop/yourkickstartersucks.xml"
+		"/C/Users/Kevin Weckworth/Dropbox/Trimps Save P183 Z181.txt"
 	],
 	"find":
 	{
@@ -607,6 +734,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"GLFW_LIBRARIES",
 			"gnu",
 			"gcc",
 			"\"bone_id\":",
@@ -668,24 +796,30 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 71,
+						"buffer_size": 952,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								71,
-								71
+								659,
+								659
 							]
 						],
 						"settings":
 						{
 							"auto_name": "#include <stdio>",
+							"lsp_active": true,
+							"lsp_language":
+							{
+								"clangd": "cpp"
+							},
+							"show_definitions": false,
 							"syntax": "Packages/C++/C++.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 179.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -693,60 +827,31 @@
 				},
 				{
 					"buffer": 1,
-					"file": "CMakeLists.txt",
+					"file": "vulkan-playground.sublime-project",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 351,
+						"buffer_size": 196,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								306,
-								306
+								102,
+								102
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CMakeEditor/CMakeEditor.tmLanguage"
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "build.ninja",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8333,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2310,
-								2310
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ninja/ninja.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 648.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -783,9 +888,13 @@
 		]
 	},
 	"menu_visible": true,
+	"output.diagnostics":
+	{
+		"height": 126.0
+	},
 	"output.exec":
 	{
-		"height": 74.0
+		"height": 158.0
 	},
 	"output.find_results":
 	{

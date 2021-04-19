@@ -40,7 +40,7 @@ build cmake_object_order_depends_target_vulkan-playground: phony || cmake_object
 
 build CMakeFiles/vulkan-playground.dir/src/main.cpp.obj: CXX_COMPILER__vulkan-playground src/main.cpp || cmake_object_order_depends_target_vulkan-playground
   DEP_FILE = CMakeFiles\vulkan-playground.dir\src\main.cpp.obj.d
-  FLAGS = -std=gnu++14
+  FLAGS = -std=c++17
   INCLUDES = -I. -Iglm -Iglfw/include -isystem C:/VulkanSDK/1.2.170.0/Include
   OBJECT_DIR = CMakeFiles\vulkan-playground.dir
   OBJECT_FILE_DIR = CMakeFiles\vulkan-playground.dir\src
@@ -53,8 +53,8 @@ build CMakeFiles/vulkan-playground.dir/src/main.cpp.obj: CXX_COMPILER__vulkan-pl
 #############################################
 # Link the executable bin\vulkan-playground.exe
 
-build bin/vulkan-playground.exe: CXX_EXECUTABLE_LINKER__vulkan-playground CMakeFiles/vulkan-playground.dir/src/main.cpp.obj | C$:/VulkanSDK/1.2.170.0/Lib32/vulkan-1.lib glfw/src/libglfw3.a || glfw/src/libglfw3.a
-  LINK_LIBRARIES = C:/VulkanSDK/1.2.170.0/Lib32/vulkan-1.lib glfw/src/libglfw3.a -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+build bin/vulkan-playground.exe: CXX_EXECUTABLE_LINKER__vulkan-playground CMakeFiles/vulkan-playground.dir/src/main.cpp.obj | C$:/VulkanSDK/1.2.170.0/Lib/vulkan-1.lib glfw/src/libglfw3.a || glfw/src/libglfw3.a
+  LINK_LIBRARIES = C:/VulkanSDK/1.2.170.0/Lib/vulkan-1.lib glfw/src/libglfw3.a
   OBJECT_DIR = CMakeFiles\vulkan-playground.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
@@ -239,122 +239,122 @@ build glfw/src/rebuild_cache: phony glfw/src/CMakeFiles/rebuild_cache.util
 build cmake_object_order_depends_target_glfw: phony || glfw/src/CMakeFiles/glfw.dir
 
 build glfw/src/CMakeFiles/glfw.dir/context.c.obj: C_COMPILER__glfw glfw/src/context.c || cmake_object_order_depends_target_glfw
-  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
+  DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\context.c.obj.d
   FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
-  INCLUDES = -Iglfw/include -Iglfw/src -Iglfw/deps/mingw
+  INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
 
 build glfw/src/CMakeFiles/glfw.dir/init.c.obj: C_COMPILER__glfw glfw/src/init.c || cmake_object_order_depends_target_glfw
-  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
+  DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\init.c.obj.d
   FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
-  INCLUDES = -Iglfw/include -Iglfw/src -Iglfw/deps/mingw
+  INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
 
 build glfw/src/CMakeFiles/glfw.dir/input.c.obj: C_COMPILER__glfw glfw/src/input.c || cmake_object_order_depends_target_glfw
-  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
+  DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\input.c.obj.d
   FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
-  INCLUDES = -Iglfw/include -Iglfw/src -Iglfw/deps/mingw
+  INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
 
 build glfw/src/CMakeFiles/glfw.dir/monitor.c.obj: C_COMPILER__glfw glfw/src/monitor.c || cmake_object_order_depends_target_glfw
-  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
+  DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\monitor.c.obj.d
   FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
-  INCLUDES = -Iglfw/include -Iglfw/src -Iglfw/deps/mingw
+  INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
 
 build glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj: C_COMPILER__glfw glfw/src/vulkan.c || cmake_object_order_depends_target_glfw
-  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
+  DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\vulkan.c.obj.d
   FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
-  INCLUDES = -Iglfw/include -Iglfw/src -Iglfw/deps/mingw
+  INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
 
 build glfw/src/CMakeFiles/glfw.dir/window.c.obj: C_COMPILER__glfw glfw/src/window.c || cmake_object_order_depends_target_glfw
-  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
+  DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\window.c.obj.d
   FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
-  INCLUDES = -Iglfw/include -Iglfw/src -Iglfw/deps/mingw
+  INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
 
 build glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj: C_COMPILER__glfw glfw/src/win32_init.c || cmake_object_order_depends_target_glfw
-  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
+  DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\win32_init.c.obj.d
   FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
-  INCLUDES = -Iglfw/include -Iglfw/src -Iglfw/deps/mingw
+  INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
 
 build glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj: C_COMPILER__glfw glfw/src/win32_joystick.c || cmake_object_order_depends_target_glfw
-  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
+  DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\win32_joystick.c.obj.d
   FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
-  INCLUDES = -Iglfw/include -Iglfw/src -Iglfw/deps/mingw
+  INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
 
 build glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj: C_COMPILER__glfw glfw/src/win32_monitor.c || cmake_object_order_depends_target_glfw
-  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
+  DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\win32_monitor.c.obj.d
   FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
-  INCLUDES = -Iglfw/include -Iglfw/src -Iglfw/deps/mingw
+  INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
 
 build glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj: C_COMPILER__glfw glfw/src/win32_time.c || cmake_object_order_depends_target_glfw
-  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
+  DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\win32_time.c.obj.d
   FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
-  INCLUDES = -Iglfw/include -Iglfw/src -Iglfw/deps/mingw
+  INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
 
 build glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj: C_COMPILER__glfw glfw/src/win32_thread.c || cmake_object_order_depends_target_glfw
-  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
+  DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\win32_thread.c.obj.d
   FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
-  INCLUDES = -Iglfw/include -Iglfw/src -Iglfw/deps/mingw
+  INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
 
 build glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj: C_COMPILER__glfw glfw/src/win32_window.c || cmake_object_order_depends_target_glfw
-  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
+  DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\win32_window.c.obj.d
   FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
-  INCLUDES = -Iglfw/include -Iglfw/src -Iglfw/deps/mingw
+  INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
 
 build glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj: C_COMPILER__glfw glfw/src/wgl_context.c || cmake_object_order_depends_target_glfw
-  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
+  DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\wgl_context.c.obj.d
   FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
-  INCLUDES = -Iglfw/include -Iglfw/src -Iglfw/deps/mingw
+  INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
 
 build glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj: C_COMPILER__glfw glfw/src/egl_context.c || cmake_object_order_depends_target_glfw
-  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
+  DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\egl_context.c.obj.d
   FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
-  INCLUDES = -Iglfw/include -Iglfw/src -Iglfw/deps/mingw
+  INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
 
 build glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj: C_COMPILER__glfw glfw/src/osmesa_context.c || cmake_object_order_depends_target_glfw
-  DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
+  DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\osmesa_context.c.obj.d
   FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
-  INCLUDES = -Iglfw/include -Iglfw/src -Iglfw/deps/mingw
+  INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
 

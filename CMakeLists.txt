@@ -1,15 +1,17 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.10)
 
 project(vulkan-playground)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
 
 add_executable(vulkan-playground src/main.cpp)
 
-# target_link_directories(vulkan-playground PUBLIC $ENV{VULKAN_SDK}/lib)
-# target_include_directories(vulkan-playground PUBLIC $ENV{VULKAN_SDK}/include)
+target_compile_features(vulkan-playground PRIVATE cxx_std_17)
+
 find_package(Vulkan REQUIRED)
 target_link_libraries(vulkan-playground Vulkan::Vulkan)
 
