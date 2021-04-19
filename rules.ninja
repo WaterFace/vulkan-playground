@@ -7,7 +7,7 @@
 
 # =============================================================================
 # Project: vulkan-playground
-# Configuration: 
+# Configuration: Release
 # =============================================================================
 # =============================================================================
 
@@ -17,7 +17,7 @@
 rule CXX_COMPILER__vulkan-playground
   depfile = $DEP_FILE
   deps = gcc
-  command = C:\msys64\usr\bin\g++.exe  $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  command = C:\msys64\usr\bin\g++.exe  $DEFINES $INCLUDES $FLAGS -MMD -MT $out -MF $DEP_FILE -o $out -c $in
   description = Building CXX object $out
 
 
@@ -44,7 +44,7 @@ rule CUSTOM_COMMAND
 rule C_COMPILER__glfw
   depfile = $DEP_FILE
   deps = gcc
-  command = C:\msys64\usr\bin\gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out   -c $in
+  command = C:\msys64\usr\bin\gcc.exe $DEFINES $INCLUDES $FLAGS -MMD -MT $out -MF $DEP_FILE -o $out   -c $in
   description = Building C object $out
 
 

@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"glfwEx",
+				"glfwExtensionCount"
+			],
+			[
+				"vkDestroy",
+				"vkDestroyInstance(VkInstance instance, const VkAllocationCallbacks *pAllocator)\t  void"
+			],
+			[
 				"PROJECT",
 				"PROJECT_NAME"
 			],
@@ -247,10 +255,36 @@
 			"file": "src/main.cpp",
 			"settings":
 			{
-				"buffer_size": 952,
+				"buffer_size": 7992,
 				"encoding": "UTF-8",
 				"line_ending": "Windows",
 				"name": "#include <stdio>"
+			}
+		},
+		{
+			"file": "CMakeLists.txt",
+			"settings":
+			{
+				"buffer_size": 862,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": ".gitignore",
+			"settings":
+			{
+				"buffer_size": 38,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "CMakeCache.txt",
+			"settings":
+			{
+				"buffer_size": 19802,
+				"line_ending": "Windows"
 			}
 		},
 		{
@@ -475,16 +509,16 @@
 		"selected_items":
 		[
 			[
+				"indent",
+				"Indentation: Reindent Lines"
+			],
+			[
 				"lsp",
 				"LSP: Enable Language Server Globally"
 			],
 			[
 				"packa",
 				"Package Control: Install Package"
-			],
-			[
-				"indent",
-				"Indentation: Reindent Lines"
 			],
 			[
 				"build",
@@ -588,6 +622,12 @@
 	],
 	"file_history":
 	[
+		"/C/dev/vulkan-playground/gitignore",
+		"/C/dev/vulkan-playground/compile_commands.json",
+		"/C/dev/vulkan-playground/CMakeCache.txt",
+		"/C/dev/vulkan-playground/make.bat",
+		"/C/dev/vulkan-playground/run.bat",
+		"/C/dev/vulkan-playground/build.bat",
 		"/C/dev/vulkan-playground/vulkan-playground.sublime-project",
 		"/C/dev/vulkan-playground/build.ninja",
 		"/C/dev/vulkan-playground/CMakeLists.txt",
@@ -709,13 +749,7 @@
 		"/D/Google Drive/School/MAT367/sample_latex_file.tex",
 		"/D/Google Drive/School/PHL354/Assignment 3.tex",
 		"/D/Downloads/Diablo II + LoD/patch/prepatch.log",
-		"/D/Downloads/Diablo II + LoD/serials.txt",
-		"/D/Google Drive/School/SMC228/Midterm.tex",
-		"/D/Google Drive/School/CDN267/reflection.tex",
-		"/D/Google Drive/dev/aoc2020/1/1.hs",
-		"/C/Program Files (x86)/gPodder/lib/python3.8/site-packages/cairo/__init__.pyi",
-		"/C/Games/RPCS3/config.yml",
-		"/C/Users/Kevin Weckworth/Dropbox/Trimps Save P183 Z181.txt"
+		"/D/Downloads/Diablo II + LoD/serials.txt"
 	],
 	"find":
 	{
@@ -734,6 +768,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"glfw",
+			"setupDebugMessenger",
+			"createInstance",
 			"GLFW_LIBRARIES",
 			"gnu",
 			"gcc",
@@ -787,7 +824,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -796,19 +833,34 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 952,
+						"buffer_size": 7992,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								659,
-								659
+								169,
+								169
 							]
 						],
 						"settings":
 						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html"
+								},
+								{
+									"characters": "\\",
+									"selector": "text.tex.latex"
+								},
+								{
+									"characters": ".<>:\"/",
+									"selector": "source.c++"
+								}
+							],
 							"auto_name": "#include <stdio>",
 							"lsp_active": true,
 							"lsp_language":
@@ -819,14 +871,98 @@
 							"syntax": "Packages/C++/C++.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 179.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "CMakeLists.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 862,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								862,
+								862
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CMakeEditor/CMakeEditor.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
+					"buffer": 2,
+					"file": ".gitignore",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 38,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								37,
+								37
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Git Formats/Git Ignore.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "CMakeCache.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 19802,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9313,
+								9317
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 5146.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
 					"file": "vulkan-playground.sublime-project",
 					"semi_transient": false,
 					"settings":
@@ -851,7 +987,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -863,7 +999,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 39.0
 	},
 	"layout":
 	{
@@ -903,6 +1039,10 @@
 	"output.latextools":
 	{
 		"height": 126.0
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0
 	},
 	"pinned_build_system": "",
 	"project": "vulkan-playground.sublime-project",

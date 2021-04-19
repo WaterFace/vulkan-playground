@@ -12,7 +12,7 @@
 
 # =============================================================================
 # Project: vulkan-playground
-# Configuration: 
+# Configuration: Release
 # =============================================================================
 
 #############################################
@@ -40,7 +40,7 @@ build cmake_object_order_depends_target_vulkan-playground: phony || cmake_object
 
 build CMakeFiles/vulkan-playground.dir/src/main.cpp.obj: CXX_COMPILER__vulkan-playground src/main.cpp || cmake_object_order_depends_target_vulkan-playground
   DEP_FILE = CMakeFiles\vulkan-playground.dir\src\main.cpp.obj.d
-  FLAGS = -std=c++17
+  FLAGS = -O3 -DNDEBUG   -std=c++17
   INCLUDES = -I. -Iglm -Iglfw/include -isystem C:/VulkanSDK/1.2.170.0/Include
   OBJECT_DIR = CMakeFiles\vulkan-playground.dir
   OBJECT_FILE_DIR = CMakeFiles\vulkan-playground.dir\src
@@ -54,7 +54,8 @@ build CMakeFiles/vulkan-playground.dir/src/main.cpp.obj: CXX_COMPILER__vulkan-pl
 # Link the executable bin\vulkan-playground.exe
 
 build bin/vulkan-playground.exe: CXX_EXECUTABLE_LINKER__vulkan-playground CMakeFiles/vulkan-playground.dir/src/main.cpp.obj | C$:/VulkanSDK/1.2.170.0/Lib/vulkan-1.lib glfw/src/libglfw3.a || glfw/src/libglfw3.a
-  LINK_LIBRARIES = C:/VulkanSDK/1.2.170.0/Lib/vulkan-1.lib glfw/src/libglfw3.a
+  FLAGS = -O3 -DNDEBUG
+  LINK_LIBRARIES = C:/VulkanSDK/1.2.170.0/Lib/vulkan-1.lib glfw/src/libglfw3.a -lgdi32
   OBJECT_DIR = CMakeFiles\vulkan-playground.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
@@ -241,7 +242,7 @@ build cmake_object_order_depends_target_glfw: phony || glfw/src/CMakeFiles/glfw.
 build glfw/src/CMakeFiles/glfw.dir/context.c.obj: C_COMPILER__glfw glfw/src/context.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\context.c.obj.d
-  FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
+  FLAGS = -O3 -DNDEBUG   -Wall -std=c99 -Wdeclaration-after-statement
   INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
@@ -249,7 +250,7 @@ build glfw/src/CMakeFiles/glfw.dir/context.c.obj: C_COMPILER__glfw glfw/src/cont
 build glfw/src/CMakeFiles/glfw.dir/init.c.obj: C_COMPILER__glfw glfw/src/init.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\init.c.obj.d
-  FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
+  FLAGS = -O3 -DNDEBUG   -Wall -std=c99 -Wdeclaration-after-statement
   INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
@@ -257,7 +258,7 @@ build glfw/src/CMakeFiles/glfw.dir/init.c.obj: C_COMPILER__glfw glfw/src/init.c 
 build glfw/src/CMakeFiles/glfw.dir/input.c.obj: C_COMPILER__glfw glfw/src/input.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\input.c.obj.d
-  FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
+  FLAGS = -O3 -DNDEBUG   -Wall -std=c99 -Wdeclaration-after-statement
   INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
@@ -265,7 +266,7 @@ build glfw/src/CMakeFiles/glfw.dir/input.c.obj: C_COMPILER__glfw glfw/src/input.
 build glfw/src/CMakeFiles/glfw.dir/monitor.c.obj: C_COMPILER__glfw glfw/src/monitor.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\monitor.c.obj.d
-  FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
+  FLAGS = -O3 -DNDEBUG   -Wall -std=c99 -Wdeclaration-after-statement
   INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
@@ -273,7 +274,7 @@ build glfw/src/CMakeFiles/glfw.dir/monitor.c.obj: C_COMPILER__glfw glfw/src/moni
 build glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj: C_COMPILER__glfw glfw/src/vulkan.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\vulkan.c.obj.d
-  FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
+  FLAGS = -O3 -DNDEBUG   -Wall -std=c99 -Wdeclaration-after-statement
   INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
@@ -281,7 +282,7 @@ build glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj: C_COMPILER__glfw glfw/src/vulka
 build glfw/src/CMakeFiles/glfw.dir/window.c.obj: C_COMPILER__glfw glfw/src/window.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\window.c.obj.d
-  FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
+  FLAGS = -O3 -DNDEBUG   -Wall -std=c99 -Wdeclaration-after-statement
   INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
@@ -289,7 +290,7 @@ build glfw/src/CMakeFiles/glfw.dir/window.c.obj: C_COMPILER__glfw glfw/src/windo
 build glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj: C_COMPILER__glfw glfw/src/win32_init.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\win32_init.c.obj.d
-  FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
+  FLAGS = -O3 -DNDEBUG   -Wall -std=c99 -Wdeclaration-after-statement
   INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
@@ -297,7 +298,7 @@ build glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj: C_COMPILER__glfw glfw/src/w
 build glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj: C_COMPILER__glfw glfw/src/win32_joystick.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\win32_joystick.c.obj.d
-  FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
+  FLAGS = -O3 -DNDEBUG   -Wall -std=c99 -Wdeclaration-after-statement
   INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
@@ -305,7 +306,7 @@ build glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj: C_COMPILER__glfw glfw/s
 build glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj: C_COMPILER__glfw glfw/src/win32_monitor.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\win32_monitor.c.obj.d
-  FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
+  FLAGS = -O3 -DNDEBUG   -Wall -std=c99 -Wdeclaration-after-statement
   INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
@@ -313,7 +314,7 @@ build glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj: C_COMPILER__glfw glfw/sr
 build glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj: C_COMPILER__glfw glfw/src/win32_time.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\win32_time.c.obj.d
-  FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
+  FLAGS = -O3 -DNDEBUG   -Wall -std=c99 -Wdeclaration-after-statement
   INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
@@ -321,7 +322,7 @@ build glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj: C_COMPILER__glfw glfw/src/w
 build glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj: C_COMPILER__glfw glfw/src/win32_thread.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\win32_thread.c.obj.d
-  FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
+  FLAGS = -O3 -DNDEBUG   -Wall -std=c99 -Wdeclaration-after-statement
   INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
@@ -329,7 +330,7 @@ build glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj: C_COMPILER__glfw glfw/src
 build glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj: C_COMPILER__glfw glfw/src/win32_window.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\win32_window.c.obj.d
-  FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
+  FLAGS = -O3 -DNDEBUG   -Wall -std=c99 -Wdeclaration-after-statement
   INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
@@ -337,7 +338,7 @@ build glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj: C_COMPILER__glfw glfw/src
 build glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj: C_COMPILER__glfw glfw/src/wgl_context.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\wgl_context.c.obj.d
-  FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
+  FLAGS = -O3 -DNDEBUG   -Wall -std=c99 -Wdeclaration-after-statement
   INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
@@ -345,7 +346,7 @@ build glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj: C_COMPILER__glfw glfw/src/
 build glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj: C_COMPILER__glfw glfw/src/egl_context.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\egl_context.c.obj.d
-  FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
+  FLAGS = -O3 -DNDEBUG   -Wall -std=c99 -Wdeclaration-after-statement
   INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
@@ -353,7 +354,7 @@ build glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj: C_COMPILER__glfw glfw/src/
 build glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj: C_COMPILER__glfw glfw/src/osmesa_context.c || cmake_object_order_depends_target_glfw
   DEFINES = -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw\src\CMakeFiles\glfw.dir\osmesa_context.c.obj.d
-  FLAGS = -Wall -std=c99 -Wdeclaration-after-statement
+  FLAGS = -O3 -DNDEBUG   -Wall -std=c99 -Wdeclaration-after-statement
   INCLUDES = -Iglfw/include -Iglfw/src
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw\src\CMakeFiles\glfw.dir
@@ -367,6 +368,7 @@ build glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj: C_COMPILER__glfw glfw/s
 # Link the static library glfw\src\libglfw3.a
 
 build glfw/src/libglfw3.a: C_STATIC_LIBRARY_LINKER__glfw glfw/src/CMakeFiles/glfw.dir/context.c.obj glfw/src/CMakeFiles/glfw.dir/init.c.obj glfw/src/CMakeFiles/glfw.dir/input.c.obj glfw/src/CMakeFiles/glfw.dir/monitor.c.obj glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj glfw/src/CMakeFiles/glfw.dir/window.c.obj glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj glfw/src/CMakeFiles/glfw.dir/win32_time.c.obj glfw/src/CMakeFiles/glfw.dir/win32_thread.c.obj glfw/src/CMakeFiles/glfw.dir/win32_window.c.obj glfw/src/CMakeFiles/glfw.dir/wgl_context.c.obj glfw/src/CMakeFiles/glfw.dir/egl_context.c.obj glfw/src/CMakeFiles/glfw.dir/osmesa_context.c.obj
+  LANGUAGE_COMPILE_FLAGS = -O3 -DNDEBUG
   OBJECT_DIR = glfw\src\CMakeFiles\glfw.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
@@ -475,14 +477,14 @@ default all
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:/Program$ Files/CMake/share/cmake-3.15/Modules/BasicConfigVersion-SameMajorVersion.cmake.in C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeDependentOption.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakePackageConfigHelpers.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeRCInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CheckCSourceCompiles.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CheckIncludeFile.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CheckLibraryExists.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/FindDoxygen.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/FindPackageHandleStandardArgs.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/FindPackageMessage.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/FindThreads.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/FindVulkan.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/GNUInstallDirs.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Internal/CMakeCheckCompilerFlag.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/WindowsPaths.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.15.3/CMakeCCompiler.cmake CMakeFiles/3.15.3/CMakeCXXCompiler.cmake CMakeFiles/3.15.3/CMakeRCCompiler.cmake CMakeFiles/3.15.3/CMakeSystem.cmake CMakeLists.txt glfw/CMakeLists.txt glfw/CMake/cmake_uninstall.cmake.in glfw/CMake/glfw3.pc.in glfw/CMake/glfw3Config.cmake.in glfw/src/CMakeLists.txt glfw/src/glfw_config.h.in
+build build.ninja: RERUN_CMAKE | C$:/Program$ Files/CMake/share/cmake-3.15/Modules/BasicConfigVersion-SameMajorVersion.cmake.in C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeDependentOption.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakePackageConfigHelpers.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeRCInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CheckCSourceCompiles.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CheckIncludeFile.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CheckLibraryExists.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/FindDoxygen.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/FindPackageHandleStandardArgs.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/FindPackageMessage.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/FindThreads.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/FindVulkan.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/GNUInstallDirs.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Internal/CMakeCheckCompilerFlag.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/WindowsPaths.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.15.3/CMakeCCompiler.cmake CMakeFiles/3.15.3/CMakeCXXCompiler.cmake CMakeFiles/3.15.3/CMakeRCCompiler.cmake CMakeFiles/3.15.3/CMakeSystem.cmake CMakeLists.txt GNUMakeRulesOverwrite.cmake glfw/CMakeLists.txt glfw/CMake/cmake_uninstall.cmake.in glfw/CMake/glfw3.pc.in glfw/CMake/glfw3Config.cmake.in glfw/src/CMakeLists.txt glfw/src/glfw_config.h.in
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Program$ Files/CMake/share/cmake-3.15/Modules/BasicConfigVersion-SameMajorVersion.cmake.in C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeDependentOption.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakePackageConfigHelpers.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeRCInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CheckCSourceCompiles.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CheckIncludeFile.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CheckLibraryExists.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/FindDoxygen.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/FindPackageHandleStandardArgs.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/FindPackageMessage.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/FindThreads.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/FindVulkan.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/GNUInstallDirs.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Internal/CMakeCheckCompilerFlag.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/WindowsPaths.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.15.3/CMakeCCompiler.cmake CMakeFiles/3.15.3/CMakeCXXCompiler.cmake CMakeFiles/3.15.3/CMakeRCCompiler.cmake CMakeFiles/3.15.3/CMakeSystem.cmake CMakeLists.txt glfw/CMakeLists.txt glfw/CMake/cmake_uninstall.cmake.in glfw/CMake/glfw3.pc.in glfw/CMake/glfw3Config.cmake.in glfw/src/CMakeLists.txt glfw/src/glfw_config.h.in: phony
+build C$:/Program$ Files/CMake/share/cmake-3.15/Modules/BasicConfigVersion-SameMajorVersion.cmake.in C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeDependentOption.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakePackageConfigHelpers.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeRCInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CheckCSourceCompiles.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CheckIncludeFile.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/CheckLibraryExists.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Compiler/GNU.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/FindDoxygen.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/FindPackageHandleStandardArgs.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/FindPackageMessage.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/FindThreads.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/FindVulkan.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/GNUInstallDirs.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Internal/CMakeCheckCompilerFlag.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/Windows.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/Platform/WindowsPaths.cmake C$:/Program$ Files/CMake/share/cmake-3.15/Modules/WriteBasicConfigVersionFile.cmake CMakeCache.txt CMakeFiles/3.15.3/CMakeCCompiler.cmake CMakeFiles/3.15.3/CMakeCXXCompiler.cmake CMakeFiles/3.15.3/CMakeRCCompiler.cmake CMakeFiles/3.15.3/CMakeSystem.cmake CMakeLists.txt GNUMakeRulesOverwrite.cmake glfw/CMakeLists.txt glfw/CMake/cmake_uninstall.cmake.in glfw/CMake/glfw3.pc.in glfw/CMake/glfw3Config.cmake.in glfw/src/CMakeLists.txt glfw/src/glfw_config.h.in: phony
 
 
 #############################################

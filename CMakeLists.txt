@@ -1,5 +1,14 @@
 cmake_minimum_required(VERSION 3.10)
 
+if (CMAKE_GENERATOR MATCHES "Ninja")
+    file(
+        WRITE "${CMAKE_BINARY_DIR}/GNUMakeRulesOverwrite.cmake" 
+            "STRING(REPLACE \"-MD\" \"-MMD\" CMAKE_DEPFILE_FLAGS_C \"\${CMAKE_DEPFILE_FLAGS_C}\")\n"
+            "STRING(REPLACE \"-MD\" \"-MMD\" CMAKE_DEPFILE_FLAGS_CXX \"\${CMAKE_DEPFILE_FLAGS_CXX}\")\n"
+    )
+    set(CMAKE_USER_MAKE_RULES_OVERRIDE "${CMAKE_BINARY_DIR}/GNUMakeRulesOverwrite.cmake" CACHE INTERNAL "")
+endif()
+
 project(vulkan-playground)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -21,5 +30,7 @@ target_include_directories(vulkan-playground PUBLIC ${PROJECT_SOURCE_DIR}/glm)
 add_subdirectory(${PROJECT_SOURCE_DIR}/glfw)
 target_include_directories(vulkan-playground PUBLIC ${PROJECT_SOURCE_DIR}/glfw/include)
 target_link_libraries(vulkan-playground glfw ${GLFW_LIBRARIES})
+
+target_link_libraries(vulkan-playground gdi32)
 
 add_dependencies(vulkan-playground glfw)
