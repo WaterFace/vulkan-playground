@@ -4,3 +4,6 @@ compile_commands.json
 /lib/*
 /CMakeFiles/*
 .ninja_log
+/shaders/*.spv
+*.stackdump
+install_manifest.txt
