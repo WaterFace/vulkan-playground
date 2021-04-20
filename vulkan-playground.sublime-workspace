@@ -4,6 +4,162 @@
 		"selected_items":
 		[
 			[
+				"dynamic",
+				"dynamicStates\t  VkDynamicState [2]"
+			],
+			[
+				"dyna",
+				"dynamicStateCount\t  uint32_t"
+			],
+			[
+				"vkpipelinedyna",
+				"VkPipelineDynamicStateCreateInfo\t  Struct"
+			],
+			[
+				"color",
+				"colorBlendAttachment\t  VkPipelineColorBlendAttachmentState"
+			],
+			[
+				"vk_logic",
+				"VK_LOGIC_OP_COPY\t  VkLogicOp"
+			],
+			[
+				"logi",
+				"logicOp\t  VkLogicOp"
+			],
+			[
+				"vkpipelinecolorblendstatecreate",
+				"VkPipelineColorBlendStateCreateInfo\t  Interface"
+			],
+			[
+				"VK_BLEND_FACTOR_ONE",
+				"VK_BLEND_FACTOR_ONE_MINUS_SRC_ALPHA\t  VkBlendFactor"
+			],
+			[
+				"VK_colo",
+				"VK_COLOR_COMPONENT_R_BIT\t  VkColorComponentFlagBits"
+			],
+			[
+				"vk_sample",
+				"VK_SAMPLE_COUNT_1_BIT\t  VkSampleCountFlagBits"
+			],
+			[
+				"rasteriz",
+				"rasterizationSamples\t  VkSampleCountFlagBits"
+			],
+			[
+				"vkpipelinemultisample",
+				"VkPipelineMultisampleStateCreateInfo\t  Struct"
+			],
+			[
+				"depthbias",
+				"depthBiasSlopeFactor\t  float"
+			],
+			[
+				"depth",
+				"depthBiasConstantFactor\t  float"
+			],
+			[
+				"VK_cullmode",
+				"VK_CULL_MODE_BACK_BIT\t  VkCullModeFlagBits"
+			],
+			[
+				"raster",
+				"rasterizerDiscardEnable\t  VkBool32"
+			],
+			[
+				"dep",
+				"depthClampEnable\t  VkBool32"
+			],
+			[
+				"VkPipelineRasteri",
+				"VkPipelineRasterizationStateCreateInfo\t  Struct"
+			],
+			[
+				"viewpor",
+				"viewportState\t  VkPipelineViewportStateCreateInfo"
+			],
+			[
+				"viewport",
+				"viewport\t  VkViewport"
+			],
+			[
+				"view",
+				"viewportState\t  VkPipelineViewportStateCreateInfo"
+			],
+			[
+				"Vkpipelineviewportstatecreate",
+				"VkPipelineViewportStateCreateInfo\t  Interface"
+			],
+			[
+				"min",
+				"minDepth\t  float"
+			],
+			[
+				"swap",
+				"swapChainExtent\t  VkExtent2D"
+			],
+			[
+				"VK_primitive_tpo",
+				"VK_PRIMITIVE_TOPOLOGY_TRIANGLE_LIST\t  VkPrimitiveTopology"
+			],
+			[
+				"VkPipelineInput",
+				"VkPipelineInputAssemblyStateCreateInfo\t  Interface"
+			],
+			[
+				"pVertex",
+				"pVertexBindingDescriptions\t  const VkVertexInputBindingDescription *"
+			],
+			[
+				"vertex",
+				"vertexBindingDescriptionCount\t  uint32_t"
+			],
+			[
+				"VkPipelineVerte",
+				"VkPipelineVertexInputStateCreateInfo\t  Interface"
+			],
+			[
+				"frag",
+				"fragShaderStageInfo\t  VkPipelineShaderStageCreateInfo"
+			],
+			[
+				"vertsha",
+				"vertShaderStageInfo\t  VkPipelineShaderStageCreateInfo"
+			],
+			[
+				"vertSha",
+				"vertShaderStageInfo\t  VkPipelineShaderStageCreateInfo"
+			],
+			[
+				"vkPipelineSha",
+				"VkPipelineShaderStageCreateInfo\t  Interface"
+			],
+			[
+				"vkCreateShaderM",
+				"vkCreateShaderModule(VkDevice device, const VkShaderModuleCreateInfo *pCreateInfo, const VkAllocationCallbacks *pAllocator, VkShaderModule *pShaderModule)\t  VkResult"
+			],
+			[
+				"is",
+				"is_open() const\t  bool"
+			],
+			[
+				"PROJ",
+				"PROJECT_SOURCE_DIR"
+			],
+			[
+				"add_custom",
+				"add_custom_target"
+			],
+			[
+				"add",
+				"add_custom_command"
+			],
+			[
+				"VkDeviceQueue",
+				"VkDeviceQueueCreateInfo\t  Struct"
+			],
+			[
 				"glfwEx",
 				"glfwExtensionCount"
 			],
@@ -14,10 +170,6 @@
 			[
 				"PROJECT",
 				"PROJECT_NAME"
-			],
-			[
-				"add",
-				"add_dependencies"
 			],
 			[
 				"PROJEC",
@@ -74,10 +226,6 @@
 			[
 				"wa",
 				"water_level"
-			],
-			[
-				"is",
-				"is_moon"
 			],
 			[
 				"impro",
@@ -255,43 +403,34 @@
 			"file": "src/main.cpp",
 			"settings":
 			{
-				"buffer_size": 7992,
+				"buffer_size": 23894,
 				"encoding": "UTF-8",
-				"line_ending": "Windows",
-				"name": "#include <stdio>"
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "shaders/shader.vert",
+			"settings":
+			{
+				"buffer_size": 367,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "shaders/shader.frag",
+			"settings":
+			{
+				"buffer_size": 197,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "CMakeLists.txt",
 			"settings":
 			{
-				"buffer_size": 862,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": ".gitignore",
-			"settings":
-			{
-				"buffer_size": 38,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "CMakeCache.txt",
-			"settings":
-			{
-				"buffer_size": 19802,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "vulkan-playground.sublime-project",
-			"settings":
-			{
-				"buffer_size": 196,
+				"buffer_size": 1303,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -509,8 +648,20 @@
 		"selected_items":
 		[
 			[
+				"syntax c++",
+				"Set Syntax: C++11"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
 				"indent",
 				"Indentation: Reindent Lines"
+			],
+			[
+				"init",
+				"Snippet: template <typename ${1:_InputIter}>"
 			],
 			[
 				"lsp",
@@ -569,10 +720,6 @@
 				"Build With: LaTeX - Traditional"
 			],
 			[
-				"package",
-				"Package Control: Install Package"
-			],
-			[
 				"",
 				"Build With: LaTeX - Traditional"
 			],
@@ -618,19 +765,27 @@
 	},
 	"expanded_folders":
 	[
-		"/C/dev/vulkan-playground"
+		"/C/dev/vulkan-playground",
+		"/C/dev/vulkan-playground/shaders",
+		"/C/dev/vulkan-playground/src"
 	],
 	"file_history":
 	[
+		"/C/dev/vulkan-playground/compile-shaders.bat",
+		"/C/dev/vulkan-playground/CMakeCache.txt",
+		"/C/dev/vulkan-playground/.ninja_deps",
+		"/C/dev/vulkan-playground/CMakeLists.txt",
+		"/C/dev/vulkan-playground/build.ninja",
+		"/C/dev/vulkan-playground/.ninja_log",
+		"/C/dev/vulkan-playground/rules.ninja",
+		"/C/dev/vulkan-playground/vulkan-playground.sublime-project",
+		"/C/dev/vulkan-playground/src/main.cpp",
+		"/C/dev/vulkan-playground/.gitignore",
 		"/C/dev/vulkan-playground/gitignore",
 		"/C/dev/vulkan-playground/compile_commands.json",
-		"/C/dev/vulkan-playground/CMakeCache.txt",
 		"/C/dev/vulkan-playground/make.bat",
 		"/C/dev/vulkan-playground/run.bat",
 		"/C/dev/vulkan-playground/build.bat",
-		"/C/dev/vulkan-playground/vulkan-playground.sublime-project",
-		"/C/dev/vulkan-playground/build.ninja",
-		"/C/dev/vulkan-playground/CMakeLists.txt",
 		"/C/dev/vulkan-playground/.git/COMMIT_EDITMSG",
 		"/C/dev/vulkan-playground/glfw/CMakeLists.txt",
 		"/C/dev/vulkan-playground/glfw/README.md",
@@ -743,13 +898,7 @@
 		"/D/Google Drive/dev/aoc2020/src/4/4test.hs",
 		"/D/Google Drive/dev/aoc2020/src/2/2.hs",
 		"/D/Google Drive/dev/aoc2020/src/3/input.txt",
-		"/D/Google Drive/dev/aoc2020/src/1/Main.hs",
-		"/D/Google Drive/dev/aoc2020/src/2/inputTest.txt",
-		"/D/Google Drive/dev/aoc2020/src/2/input.txt",
-		"/D/Google Drive/School/MAT367/sample_latex_file.tex",
-		"/D/Google Drive/School/PHL354/Assignment 3.tex",
-		"/D/Downloads/Diablo II + LoD/patch/prepatch.log",
-		"/D/Downloads/Diablo II + LoD/serials.txt"
+		"/D/Google Drive/dev/aoc2020/src/1/Main.hs"
 	],
 	"find":
 	{
@@ -768,6 +917,18 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"shader",
+			"init",
+			"createswap",
+			"swapchain",
+			"init",
+			"isdevicesuitable",
+			"adequate",
+			"isdevice",
+			"validationlayers",
+			"indices",
+			"cleanup",
+			"physicaldevice",
 			"glfw",
 			"setupDebugMessenger",
 			"createInstance",
@@ -824,7 +985,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -833,15 +994,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7992,
+						"buffer_size": 23894,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								169,
-								169
+								22577,
+								22577
 							]
 						],
 						"settings":
@@ -861,14 +1022,42 @@
 									"selector": "source.c++"
 								}
 							],
-							"auto_name": "#include <stdio>",
 							"lsp_active": true,
 							"lsp_language":
 							{
 								"clangd": "cpp"
 							},
 							"show_definitions": false,
-							"syntax": "Packages/C++/C++.sublime-syntax"
+							"syntax": "Packages/C++11/C++11.tmLanguage",
+							"tab_size": 2
+						},
+						"translation.x": 0.0,
+						"translation.y": 10970.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "shaders/shader.vert",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 367,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								367,
+								367
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/OpenGL Shading Language (GLSL)/GLSL.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -878,53 +1067,25 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "CMakeLists.txt",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 862,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								862,
-								862
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CMakeEditor/CMakeEditor.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
 					"buffer": 2,
-					"file": ".gitignore",
+					"file": "shaders/shader.frag",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 38,
+						"buffer_size": 197,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								37,
-								37
+								188,
+								188
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Git Formats/Git Ignore.sublime-syntax"
+							"syntax": "Packages/OpenGL Shading Language (GLSL)/GLSL.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -935,59 +1096,30 @@
 				},
 				{
 					"buffer": 3,
-					"file": "CMakeCache.txt",
+					"file": "CMakeLists.txt",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 19802,
+						"buffer_size": 1303,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9313,
-								9317
+								1303,
+								1303
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/CMakeEditor/CMakeEditor.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 5146.0,
+						"translation.y": 324.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "vulkan-playground.sublime-project",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 196,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								102,
-								102
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -1086,7 +1218,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 236.0,
+	"side_bar_width": 207.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
