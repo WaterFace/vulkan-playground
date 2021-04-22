@@ -4,6 +4,226 @@
 		"selected_items":
 		[
 			[
+				"inpos",
+				"inPosition"
+			],
+			[
+				"frame",
+				"frameBufferResized\t  bool"
+			],
+			[
+				"cleanup",
+				"cleanupSwapChain()\t  void"
+			],
+			[
+				"vkWaitForFence",
+				"vkWaitForFences(VkDevice device, uint32_t fenceCount, const VkFence *pFences, VkBool32 waitAll, uint64_t timeout)\t  VkResult"
+			],
+			[
+				"VK_debug_utils",
+				"VK_DEBUG_UTILS_MESSAGE_SEVERITY_WARNING_BIT_EXT\t  VkDebugUtilsMessageSeverityFlagBitsEXT"
+			],
+			[
+				"infligh",
+				"inFlightFences\t  std::vector<VkFence>"
+			],
+			[
+				"render",
+				"renderFinishedSemaphores\t  std::vector<VkSemaphore>"
+			],
+			[
+				"wait",
+				"waitSemaphores\t  VkSemaphore [1]"
+			],
+			[
+				"depen",
+				"dependencyCount\t  uint32_t"
+			],
+			[
+				"vkQueuesubmit",
+				"vkQueueSubmit(VkQueue queue, uint32_t submitCount, const VkSubmitInfo *pSubmits, VkFence fence)\t  VkResult"
+			],
+			[
+				"signal",
+				"signalSemaphoreCount\t  uint32_t"
+			],
+			[
+				"image",
+				"imageIndex\t  uint32_t"
+			],
+			[
+				"command",
+				"commandBufferCount\t  uint32_t"
+			],
+			[
+				"waitSe",
+				"waitSemaphoreCount\t  uint32_t"
+			],
+			[
+				"swapchain",
+				"swapChain\t  VkSwapchainKHR"
+			],
+			[
+				"VkSem",
+				"VkSemaphoreCreateInfo\t  Struct"
+			],
+			[
+				"vk_pipeline",
+				"VK_PIPELINE_BIND_POINT_GRAPHICS\t  VkPipelineBindPoint"
+			],
+			[
+				"clear",
+				"clearColor\t  VkClearColorValue"
+			],
+			[
+				"renderpass",
+				"renderPassInfo\t  VkRenderPassBeginInfo"
+			],
+			[
+				"VkRenderpass",
+				"VkRenderPassBeginInfo\t  Interface"
+			],
+			[
+				"vk_structure_type_command",
+				"VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO\t  VkStructureType"
+			],
+			[
+				"begin",
+				"beginInfo\t  VkCommandBufferBeginInfo"
+			],
+			[
+				"vkallocatecomm",
+				"vkAllocateCommandBuffers(VkDevice device, const VkCommandBufferAllocateInfo *pAllocateInfo, VkCommandBuffer *pCommandBuffers)\t  VkResult"
+			],
+			[
+				"VkDestroyCommand",
+				"vkDestroyCommandPool(VkDevice device, VkCommandPool commandPool, const VkAllocationCallbacks *pAllocator)\t  void"
+			],
+			[
+				"VkCreateCommand",
+				"vkCreateCommandPool(VkDevice device, const VkCommandPoolCreateInfo *pCreateInfo, const VkAllocationCallbacks *pAllocator, VkCommandPool *pCommandPool)\t  VkResult"
+			],
+			[
+				"comm",
+				"commandPoolInfo\t  VkCommandPoolCreateInfo"
+			],
+			[
+				"vkcommandpoolcrea",
+				"VkCommandPoolCreateInfo\t  Interface"
+			],
+			[
+				"swap",
+				"swapChainFramebuffers\t  std::vector<VkFramebuffer>"
+			],
+			[
+				"framebuffers",
+				"swapChainFramebuffers\t  std::vector<VkFramebuffer>"
+			],
+			[
+				"Vkcreateframebuff",
+				"vkCreateFramebuffer(VkDevice device, const VkFramebufferCreateInfo *pCreateInfo, const VkAllocationCallbacks *pAllocator, VkFramebuffer *pFramebuffer)\t  VkResult"
+			],
+			[
+				"VkFrame",
+				"VkFramebufferCreateInfo\t  Interface"
+			],
+			[
+				"swapc",
+				"swapChainImageViews\t  std::vector<VkImageView>"
+			],
+			[
+				"vkImage",
+				"VkImageView\t  Interface"
+			],
+			[
+				"basepipe",
+				"basePipelineIndex\t  int32_t"
+			],
+			[
+				"pipelineL",
+				"pipelineLayout\t  VkPipelineLayout"
+			],
+			[
+				"pipeline",
+				"pipelineInfo\t  VkGraphicsPipelineCreateInfo"
+			],
+			[
+				"pViewpo",
+				"pViewportState\t  const VkPipelineViewportStateCreateInfo *"
+			],
+			[
+				"redn",
+				"renderPass"
+			],
+			[
+				"redner",
+				"renderPassInfo"
+			],
+			[
+				"sub",
+				"subpassCount\t  uint32_t"
+			],
+			[
+				"color",
+				"colorAttachment\t  VkAttachmentDescription"
+			],
+			[
+				"attach",
+				"attachmentCount\t  uint32_t"
+			],
+			[
+				"VkRenderPassCreate",
+				"VkRenderPassCreateInfo\t  Interface"
+			],
+			[
+				"VK_PIPELINE_BIND_POINT",
+				"VK_PIPELINE_BIND_POINT_GRAPHICS\t  VkPipelineBindPoint"
+			],
+			[
+				"colorAttachment",
+				"colorAttachmentRef\t  VkAttachmentReference"
+			],
+			[
+				"vk_imagelayout",
+				"VK_IMAGE_LAYOUT_UNDEFINED\t  VkImageLayout"
+			],
+			[
+				"vk_atta",
+				"VK_ATTACHMENT_STORE_OP_STORE\t  VkAttachmentStoreOp"
+			],
+			[
+				"swapchainImage",
+				"swapChainImageFormat\t  VkFormat"
+			],
+			[
+				"vkDestroyPipelineLay",
+				"vkDestroyPipelineLayout(VkDevice device, VkPipelineLayout pipelineLayout, const VkAllocationCallbacks *pAllocator)\t  void"
+			],
+			[
+				"pipe",
+				"pipelineLayout\t  VkPipelineLayout"
+			],
+			[
+				"pipelinelayout",
+				"pipelineLayoutInfo\t  VkPipelineLayoutCreateInfo"
+			],
+			[
+				"vkCreatePipelineLayout",
+				"vkCreatePipelineLayout(VkDevice device, const VkPipelineLayoutCreateInfo *pCreateInfo, const VkAllocationCallbacks *pAllocator, VkPipelineLayout *pPipelineLayout)\t  VkResult"
+			],
+			[
+				"pipelineLayout",
+				"pipelineLayoutInfo\t  VkPipelineLayoutCreateInfo"
+			],
+			[
+				"nullt",
+				"nullptr\t  std::nullptr_t"
+			],
+			[
+				"piep",
+				"pipelineLayoutInfo"
+			],
+			[
 				"dynamic",
 				"dynamicStates\t  VkDynamicState [2]"
 			],
@@ -14,10 +234,6 @@
 			[
 				"vkpipelinedyna",
 				"VkPipelineDynamicStateCreateInfo\t  Struct"
-			],
-			[
-				"color",
-				"colorBlendAttachment\t  VkPipelineColorBlendAttachmentState"
 			],
 			[
 				"vk_logic",
@@ -94,10 +310,6 @@
 			[
 				"min",
 				"minDepth\t  float"
-			],
-			[
-				"swap",
-				"swapChainExtent\t  VkExtent2D"
 			],
 			[
 				"VK_primitive_tpo",
@@ -302,98 +514,6 @@
 			[
 				"be",
 				"\\begin{}                                          \tlatex-document"
-			],
-			[
-				"grup",
-				"group2"
-			],
-			[
-				"mod",
-				"\\mod{value}                                       \tamsmath"
-			],
-			[
-				"Fi",
-				"Figure_1_Mandelbrot_color_zoomed.png"
-			],
-			[
-				"inclu",
-				"\\includegraphics[options]{name}                   \tlatex-document"
-			],
-			[
-				"supset",
-				"\\supsetneq                                        \tamssymb"
-			],
-			[
-				"times",
-				"\\otimes                                           \tlatex-mathsymbols"
-			],
-			[
-				"empty",
-				"\\emptyset                                         \tlatex-mathsymbols"
-			],
-			[
-				"approx",
-				"\\approxeq                                         \tamssymb"
-			],
-			[
-				"ikar",
-				"ikarosRace"
-			],
-			[
-				"ikaros",
-				"ikarosRace"
-			],
-			[
-				"ik",
-				"ikarosFile"
-			],
-			[
-				"bibl",
-				"\\bibliographystyle{style}                         \tlatex-document"
-			],
-			[
-				"biblo",
-				"\\bibliography{file}                               \tlatex-document"
-			],
-			[
-				"comp",
-				"\\comp{arg}                                        \tlocal"
-			],
-			[
-				"cases",
-				"\\begin{cases}                                     \tamsmath"
-			],
-			[
-				"moset",
-				"mostEfficientUpgrade"
-			],
-			[
-				"most",
-				"mostEfficientUpgrade"
-			],
-			[
-				"level",
-				"levelCap"
-			],
-			[
-				"ramcost",
-				"ramCostMult"
-			],
-			[
-				"base",
-				"ramBaseCost"
-			],
-			[
-				"node",
-				"nodeStats"
-			],
-			[
-				"hacknet",
-				"HacknetNodeMoneyGainPerLevel"
-			],
-			[
-				"Left",
-				"\\Leftrightarrow                                   \tlatex-mathsymbols"
 			]
 		]
 	},
@@ -403,7 +523,7 @@
 			"file": "src/main.cpp",
 			"settings":
 			{
-				"buffer_size": 23894,
+				"buffer_size": 36069,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -412,7 +532,7 @@
 			"file": "shaders/shader.vert",
 			"settings":
 			{
-				"buffer_size": 367,
+				"buffer_size": 269,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -421,7 +541,7 @@
 			"file": "shaders/shader.frag",
 			"settings":
 			{
-				"buffer_size": 197,
+				"buffer_size": 196,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -430,8 +550,16 @@
 			"file": "CMakeLists.txt",
 			"settings":
 			{
-				"buffer_size": 1303,
+				"buffer_size": 1410,
 				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "build.ninja",
+			"settings":
+			{
+				"buffer_size": 26458,
 				"line_ending": "Windows"
 			}
 		}
@@ -648,6 +776,14 @@
 		"selected_items":
 		[
 			[
+				"indent",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"packa",
+				"Package Control: Remove Package"
+			],
+			[
 				"syntax c++",
 				"Set Syntax: C++11"
 			],
@@ -656,20 +792,12 @@
 				"Package Control: Install Package"
 			],
 			[
-				"indent",
-				"Indentation: Reindent Lines"
-			],
-			[
 				"init",
 				"Snippet: template <typename ${1:_InputIter}>"
 			],
 			[
 				"lsp",
 				"LSP: Enable Language Server Globally"
-			],
-			[
-				"packa",
-				"Package Control: Install Package"
 			],
 			[
 				"build",
@@ -772,6 +900,9 @@
 	"file_history":
 	[
 		"/C/dev/vulkan-playground/compile-shaders.bat",
+		"/C/dev/vulkan-playground/.gitignore",
+		"/C/dev/vulkan-playground/.git/COMMIT_EDITMSG",
+		"/C/dev/vulkan-playground/build-Debug.ninja",
 		"/C/dev/vulkan-playground/CMakeCache.txt",
 		"/C/dev/vulkan-playground/.ninja_deps",
 		"/C/dev/vulkan-playground/CMakeLists.txt",
@@ -780,13 +911,11 @@
 		"/C/dev/vulkan-playground/rules.ninja",
 		"/C/dev/vulkan-playground/vulkan-playground.sublime-project",
 		"/C/dev/vulkan-playground/src/main.cpp",
-		"/C/dev/vulkan-playground/.gitignore",
 		"/C/dev/vulkan-playground/gitignore",
 		"/C/dev/vulkan-playground/compile_commands.json",
 		"/C/dev/vulkan-playground/make.bat",
 		"/C/dev/vulkan-playground/run.bat",
 		"/C/dev/vulkan-playground/build.bat",
-		"/C/dev/vulkan-playground/.git/COMMIT_EDITMSG",
 		"/C/dev/vulkan-playground/glfw/CMakeLists.txt",
 		"/C/dev/vulkan-playground/glfw/README.md",
 		"/C/dev/csc317/computer-graphics-ray-tracing/CMakeLists.txt",
@@ -897,12 +1026,11 @@
 		"/D/Google Drive/dev/aoc2020/src/3/3.hs",
 		"/D/Google Drive/dev/aoc2020/src/4/4test.hs",
 		"/D/Google Drive/dev/aoc2020/src/2/2.hs",
-		"/D/Google Drive/dev/aoc2020/src/3/input.txt",
-		"/D/Google Drive/dev/aoc2020/src/1/Main.hs"
+		"/D/Google Drive/dev/aoc2020/src/3/input.txt"
 	],
 	"find":
 	{
-		"height": 39.0
+		"height": 40.0
 	},
 	"find_in_files":
 	{
@@ -917,6 +1045,19 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"recreateswapchain",
+			"framebufferresizedcallback",
+			"init",
+			"framebufferResizedCallback",
+			"static",
+			"suboptimal",
+			"currentframe",
+			"imagesinflight",
+			"inflightfences",
+			"createSemaphores",
+			"commandbuffers",
+			"createrenderpass",
+			"creategraphicspipeline",
 			"shader",
 			"init",
 			"createswap",
@@ -974,6 +1115,7 @@
 		"regex": true,
 		"replace_history":
 		[
+			"createSyncObjects",
 			"waypoint"
 		],
 		"reverse": false,
@@ -994,15 +1136,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 23894,
+						"buffer_size": 36069,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								22577,
-								22577
+								2538,
+								2538
 							]
 						],
 						"settings":
@@ -1028,11 +1170,11 @@
 								"clangd": "cpp"
 							},
 							"show_definitions": false,
-							"syntax": "Packages/C++11/C++11.tmLanguage",
+							"syntax": "Packages/C++/C++.sublime-syntax",
 							"tab_size": 2
 						},
 						"translation.x": 0.0,
-						"translation.y": 10970.0,
+						"translation.y": 1197.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1044,43 +1186,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 367,
+						"buffer_size": 269,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								367,
-								367
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/OpenGL Shading Language (GLSL)/GLSL.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "shaders/shader.frag",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 197,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								188,
-								188
+								266,
+								266
 							]
 						],
 						"settings":
@@ -1095,20 +1209,48 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "CMakeLists.txt",
+					"buffer": 2,
+					"file": "shaders/shader.frag",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1303,
+						"buffer_size": 196,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1303,
-								1303
+								64,
+								64
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/OpenGL Shading Language (GLSL)/GLSL.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "CMakeLists.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1410,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								479,
+								479
 							]
 						],
 						"settings":
@@ -1116,10 +1258,38 @@
 							"syntax": "Packages/CMakeEditor/CMakeEditor.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 324.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "build.ninja",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 26458,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ninja/ninja.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 972.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -1127,7 +1297,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 39.0
+		"height": 28.0
 	},
 	"input":
 	{
@@ -1180,7 +1350,7 @@
 	"project": "vulkan-playground.sublime-project",
 	"replace":
 	{
-		"height": 70.0
+		"height": 72.0
 	},
 	"save_all_on_build": true,
 	"select_file":

@@ -1,9 +1,10 @@
-/bin/*
+bin/*
 compile_commands.json
 .cache/*
-/lib/*
-/CMakeFiles/*
+lib/*
+CMakeFiles/*
 .ninja_log
-/shaders/*.spv
+shaders/*.spv
 *.stackdump
 install_manifest.txt
+.ninja*
