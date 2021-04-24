@@ -4,8 +4,128 @@
 		"selected_items":
 		[
 			[
+				"texture",
+				"textureImageMemory\t  VkDeviceMemory"
+			],
+			[
 				"staging",
 				"stagingBufferMemory\t  VkDeviceMemory"
+			],
+			[
+				"vk_image_layout_sha",
+				"VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL\t  VkImageLayout"
+			],
+			[
+				"vk_access_transf",
+				"VK_ACCESS_TRANSFER_WRITE_BIT\t  VkAccessFlagBits"
+			],
+			[
+				"vk_format_r8g8b8a8",
+				"VK_FORMAT_R8G8B8A8_SRGB\t  VkFormat"
+			],
+			[
+				"vkCmdcopyBufferToImage",
+				"vkCmdCopyBufferToImage(VkCommandBuffer commandBuffer, VkBuffer srcBuffer, VkImage dstImage, VkImageLayout dstImageLayout, uint32_t regionCount, const VkBufferImageCopy *pRegions)\t  void"
+			],
+			[
+				"image",
+				"imageSubresource\t  VkImageSubresourceLayers"
+			],
+			[
+				"buffer",
+				"bufferRowLength\t  uint32_t"
+			],
+			[
+				"base",
+				"baseArrayLayer\t  uint32_t"
+			],
+			[
+				"level",
+				"levelCount\t  uint32_t"
+			],
+			[
+				"vk_queue",
+				"VK_QUEUE_FAMILY_IGNORED\t  Text"
+			],
+			[
+				"vkImage",
+				"VkImage\t  Interface"
+			],
+			[
+				"VkBuffer",
+				"VkBuffer\t  Interface"
+			],
+			[
+				"tex",
+				"textureImageMemory\t  VkDeviceMemory"
+			],
+			[
+				"alloc",
+				"allocInfo\t  VkMemoryAllocateInfo"
+			],
+			[
+				"vk_memory",
+				"VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT\t  VkMemoryPropertyFlagBits"
+			],
+			[
+				"alloca",
+				"allocationSize\t  VkDeviceSize"
+			],
+			[
+				"vk_image_usage",
+				"VK_IMAGE_USAGE_SAMPLED_BIT\t  VkImageUsageFlagBits"
+			],
+			[
+				"vk_image_usage_trans",
+				"VK_IMAGE_USAGE_TRANSFER_DST_BIT\t  VkImageUsageFlagBits"
+			],
+			[
+				"vk_image",
+				"VK_IMAGE_LAYOUT_UNDEFINED\t  VkImageLayout"
+			],
+			[
+				"vk_image_ti",
+				"VK_IMAGE_TILING_OPTIMAL\t  VkImageTiling"
+			],
+			[
+				"VK_FORMAT_R32G32B32A32",
+				"VK_FORMAT_R32G32B32A32_UINT\t  VkFormat"
+			],
+			[
+				"arra",
+				"arrayLayers\t  uint32_t"
+			],
+			[
+				"stagin",
+				"stagingBufferMemory\t  VkDeviceMemory"
+			],
+			[
+				"vkmapmemory",
+				"vkMapMemory(VkDevice device, VkDeviceMemory memory, VkDeviceSize offset, VkDeviceSize size, VkMemoryMapFlags flags, void **ppData)\t  VkResult"
+			],
+			[
+				"stag",
+				"stagingBufferMemory\t  VkDeviceMemory"
+			],
+			[
+				"vk_memory_pro",
+				"VK_MEMORY_PROPERTY_HOST_COHERENT_BIT\t  VkMemoryPropertyFlagBits"
+			],
+			[
+				"vk_buffer_usage",
+				"VK_BUFFER_USAGE_TRANSFER_SRC_BIT\t  VkBufferUsageFlagBits"
+			],
+			[
+				"stbi_free",
+				"stbi_image_free(void *retval_from_stbi_load)\t  void"
+			],
+			[
+				"STBI_rgb",
+				"STBI_rgb_alpha\t  enum <anonymous>"
+			],
+			[
+				"target",
+				"target_include_directories"
 			],
 			[
 				"vertex",
@@ -116,10 +236,6 @@
 				"signalSemaphoreCount\t  uint32_t"
 			],
 			[
-				"image",
-				"imageIndex\t  uint32_t"
-			],
-			[
 				"command",
 				"commandBufferCount\t  uint32_t"
 			],
@@ -198,10 +314,6 @@
 			[
 				"swapc",
 				"swapChainImageViews\t  std::vector<VkImageView>"
-			],
-			[
-				"vkImage",
-				"VkImageView\t  Interface"
 			],
 			[
 				"basepipe",
@@ -402,118 +514,6 @@
 			[
 				"vertsha",
 				"vertShaderStageInfo\t  VkPipelineShaderStageCreateInfo"
-			],
-			[
-				"vertSha",
-				"vertShaderStageInfo\t  VkPipelineShaderStageCreateInfo"
-			],
-			[
-				"vkPipelineSha",
-				"VkPipelineShaderStageCreateInfo\t  Interface"
-			],
-			[
-				"vkCreateShaderM",
-				"vkCreateShaderModule(VkDevice device, const VkShaderModuleCreateInfo *pCreateInfo, const VkAllocationCallbacks *pAllocator, VkShaderModule *pShaderModule)\t  VkResult"
-			],
-			[
-				"is",
-				"is_open() const\t  bool"
-			],
-			[
-				"PROJ",
-				"PROJECT_SOURCE_DIR"
-			],
-			[
-				"add_custom",
-				"add_custom_target"
-			],
-			[
-				"add",
-				"add_custom_command"
-			],
-			[
-				"VkDeviceQueue",
-				"VkDeviceQueueCreateInfo\t  Struct"
-			],
-			[
-				"glfwEx",
-				"glfwExtensionCount"
-			],
-			[
-				"vkDestroy",
-				"vkDestroyInstance(VkInstance instance, const VkAllocationCallbacks *pAllocator)\t  void"
-			],
-			[
-				"PROJECT",
-				"PROJECT_NAME"
-			],
-			[
-				"PROJEC",
-				"PROJECT_NAME"
-			],
-			[
-				"PRojec",
-				"PROJECT_LABEL"
-			],
-			[
-				"PROJE",
-				"PROJECT_BINARY_DIR"
-			],
-			[
-				"Projectname",
-				"PROJECT_NAME"
-			],
-			[
-				"Pro",
-				"PROJECT_SOURCE_DIR"
-			],
-			[
-				"include",
-				"include_directories"
-			],
-			[
-				"top",
-				"\\top                                              \tlatex-mathsymbols"
-			],
-			[
-				"water",
-				"water_level"
-			],
-			[
-				"im",
-				"improved_perlin_noise"
-			],
-			[
-				"per",
-				"improved_perlin_noise"
-			],
-			[
-				"moun",
-				"mountain_level"
-			],
-			[
-				"hsv",
-				"hsv_to_rgb"
-			],
-			[
-				"wat",
-				"water_level"
-			],
-			[
-				"wa",
-				"water_level"
-			],
-			[
-				"impro",
-				"improved_bump_height"
-			],
-			[
-				"inter",
-				"interpolate_hsv"
-			],
-			[
-				"sea",
-				"season_color"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "src/main.cpp",
 			"settings":
 			{
-				"buffer_size": 42004,
+				"buffer_size": 53648,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -532,61 +532,8 @@
 			"file": ".gitignore",
 			"settings":
 			{
-				"buffer_size": 122,
+				"buffer_size": 198,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "WB: 4869\nRS: 2116",
-			"settings":
-			{
-				"buffer_size": 17,
-				"line_ending": "Windows",
-				"name": "WB: 4869"
-			}
-		},
-		{
-			"file": "/C/Users/Kevin Weckworth/Documents/Elder Scrolls Online/live/UserSettings.txt",
-			"settings":
-			{
-				"buffer_size": 6349,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "shaders/shader.vert",
-			"settings":
-			{
-				"buffer_size": 269,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "shaders/shader.frag",
-			"settings":
-			{
-				"buffer_size": 196,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "CMakeLists.txt",
-			"settings":
-			{
-				"buffer_size": 1410,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "build.ninja",
-			"settings":
-			{
-				"buffer_size": 26458,
 				"line_ending": "Windows"
 			}
 		}
@@ -807,24 +754,24 @@
 				"Indentation: Reindent Lines"
 			],
 			[
-				"packa",
-				"Package Control: Remove Package"
+				"lsp",
+				"LSP: Restart Servers"
 			],
 			[
-				"syntax c++",
-				"Set Syntax: C++11"
+				"packa",
+				"Package Control: Install Package"
 			],
 			[
 				"package",
 				"Package Control: Install Package"
 			],
 			[
-				"init",
-				"Snippet: template <typename ${1:_InputIter}>"
+				"syntax c++",
+				"Set Syntax: C++11"
 			],
 			[
-				"lsp",
-				"LSP: Enable Language Server Globally"
+				"init",
+				"Snippet: template <typename ${1:_InputIter}>"
 			],
 			[
 				"build",
@@ -927,13 +874,16 @@
 	"file_history":
 	[
 		"/C/dev/vulkan-playground/.git/COMMIT_EDITMSG",
-		"/C/dev/vulkan-playground/compile-shaders.bat",
+		"/C/dev/vulkan-playground/CMakeLists.txt",
+		"/C/dev/vulkan-playground/shaders/shader.frag",
+		"/C/dev/vulkan-playground/shaders/shader.vert",
+		"/C/dev/vulkan-playground/build.ninja",
 		"/C/dev/vulkan-playground/.gitignore",
+		"/C/Users/Kevin Weckworth/Documents/Elder Scrolls Online/live/UserSettings.txt",
+		"/C/dev/vulkan-playground/compile-shaders.bat",
 		"/C/dev/vulkan-playground/build-Debug.ninja",
 		"/C/dev/vulkan-playground/CMakeCache.txt",
 		"/C/dev/vulkan-playground/.ninja_deps",
-		"/C/dev/vulkan-playground/CMakeLists.txt",
-		"/C/dev/vulkan-playground/build.ninja",
 		"/C/dev/vulkan-playground/.ninja_log",
 		"/C/dev/vulkan-playground/rules.ninja",
 		"/C/dev/vulkan-playground/vulkan-playground.sublime-project",
@@ -1050,14 +1000,11 @@
 		"/D/Google Drive/dev/aoc2020/stack.yaml",
 		"/D/Google Drive/dev/aoc2020/src/4/input.txt",
 		"/D/Google Drive/dev/aoc2020/src/4/4.hs",
-		"/D/Google Drive/dev/aoc2020/src/3/3.hs",
-		"/D/Google Drive/dev/aoc2020/src/4/4test.hs",
-		"/D/Google Drive/dev/aoc2020/src/2/2.hs",
-		"/D/Google Drive/dev/aoc2020/src/3/input.txt"
+		"/D/Google Drive/dev/aoc2020/src/3/3.hs"
 	],
 	"find":
 	{
-		"height": 40.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
@@ -1072,6 +1019,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"createtextureimage",
+			"beginSingleTimeCommands",
+			"beingSingleTimeCommands",
+			"copybuffer",
+			"commandpool",
 			"createindexbuffer",
 			"vertices",
 			"createvertexbuffer",
@@ -1151,6 +1103,7 @@
 		"regex": true,
 		"replace_history":
 		[
+			"beginSingleTimeCommands",
 			"createSyncObjects",
 			"waypoint"
 		],
@@ -1163,7 +1116,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1172,15 +1125,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 42004,
+						"buffer_size": 53648,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								38098,
-								38098
+								52571,
+								52571
 							]
 						],
 						"settings":
@@ -1207,13 +1160,14 @@
 							},
 							"show_definitions": false,
 							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 2
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 20928.0,
+						"translation.y": 28602.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1222,15 +1176,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 122,
+						"buffer_size": 198,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								67,
-								67
+								42,
+								42
 							]
 						],
 						"settings":
@@ -1241,175 +1195,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 17,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								17,
-								17
-							]
-						],
-						"settings":
-						{
-							"auto_name": "WB: 4869",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/C/Users/Kevin Weckworth/Documents/Elder Scrolls Online/live/UserSettings.txt",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6349,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5345,
-								5345
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 2795.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "shaders/shader.vert",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 269,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								266,
-								266
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/OpenGL Shading Language (GLSL)/GLSL.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "shaders/shader.frag",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 196,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								64,
-								64
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/OpenGL Shading Language (GLSL)/GLSL.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "CMakeLists.txt",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1410,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								479,
-								479
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CMakeEditor/CMakeEditor.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "build.ninja",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 26458,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ninja/ninja.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 972.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
 					"type": "text"
 				}
 			]
@@ -1448,7 +1234,7 @@
 	"menu_visible": true,
 	"output.diagnostics":
 	{
-		"height": 126.0
+		"height": 138.0
 	},
 	"output.exec":
 	{
@@ -1470,7 +1256,7 @@
 	"project": "vulkan-playground.sublime-project",
 	"replace":
 	{
-		"height": 72.0
+		"height": 70.0
 	},
 	"save_all_on_build": true,
 	"select_file":

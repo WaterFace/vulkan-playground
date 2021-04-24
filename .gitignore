@@ -2,16 +2,13 @@ bin/*
 compile_commands.json
 .cache/*
 lib/*
-
 CMakeFiles/*
 CMakeCache.txt
 cmake_install.cmake
 GNUMakeRulesOverwrite.cmake
-
 shaders/*.spv
 *.stackdump
 install_manifest.txt
-
 .ninja*
 build.ninja
 rules.ninja

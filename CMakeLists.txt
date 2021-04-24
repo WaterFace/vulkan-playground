@@ -9,18 +9,21 @@ if (CMAKE_GENERATOR MATCHES "Ninja")
     set(CMAKE_USER_MAKE_RULES_OVERRIDE "${CMAKE_BINARY_DIR}/GNUMakeRulesOverwrite.cmake" CACHE INTERNAL "")
 endif()
 
-project(vulkan-playground)
+message("Building in " ${CMAKE_BUILD_TYPE} " mode")
 
-set(CMAKE_CONFIGURATION_TYPES "Release;RelWithDebInfo;Debug" CACHE STRING "Build type selections" FORCE)
+project(vulkan-playground)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
 
 add_executable(vulkan-playground src/main.cpp)
+
+target_include_directories(vulkan-playground PRIVATE include/)
 
 target_compile_features(vulkan-playground PRIVATE cxx_std_17)
 
