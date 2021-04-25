@@ -12,3 +12,4 @@ install_manifest.txt
 .ninja*
 build.ninja
 rules.ninja
+*.sublime-workspace
