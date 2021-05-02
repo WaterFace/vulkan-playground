@@ -4,7 +4,7 @@
 		{
 			"name": "ninja",
 			"shell_cmd": "ninja && \"bin/vulkan-playground.exe\"",
-      "working_dir": "${project_path}",
+			"working_dir": "${project_path}"
 		}
 	],
 	"folders":
@@ -12,5 +12,15 @@
 		{
 			"path": "."
 		}
-	]
+	],
+	"settings":
+	{
+		"LSP":
+		{
+			"clangd":
+			{
+				"enabled": true
+			}
+		}
+	}
 }

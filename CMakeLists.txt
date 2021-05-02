@@ -21,7 +21,9 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
 
-add_executable(vulkan-playground src/main.cpp)
+set(SOURCES src/main.cpp src/engine.cpp include/vulkan_init.h include/types.h)
+
+add_executable(vulkan-playground ${SOURCES})
 
 target_include_directories(vulkan-playground PRIVATE include/)
 
@@ -29,6 +31,9 @@ target_compile_features(vulkan-playground PRIVATE cxx_std_17)
 
 find_package(Vulkan REQUIRED)
 target_link_libraries(vulkan-playground Vulkan::Vulkan)
+
+add_subdirectory(vk-bootstrap)
+target_link_libraries(vulkan-playground vk-bootstrap)
 
 target_include_directories(vulkan-playground PUBLIC ${PROJECT_SOURCE_DIR})
 target_include_directories(vulkan-playground PUBLIC ${PROJECT_SOURCE_DIR}/glm)
