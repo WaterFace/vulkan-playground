@@ -21,7 +21,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
 
-set(SOURCES src/main.cpp src/engine.cpp include/vulkan_init.h include/types.h)
+set(SOURCES src/main.cpp src/engine.cpp src/vulkan_init.cpp include/types.h)
 
 add_executable(vulkan-playground ${SOURCES})
 
