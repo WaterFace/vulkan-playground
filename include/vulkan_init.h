@@ -1,6 +1,7 @@
 #pragma once
 
 #include "types.h"
+#include <vulkan/vulkan_core.h>
 
 namespace vkinit {
   VkCommandPoolCreateInfo commandPoolCreateInfo(
@@ -34,4 +35,28 @@ namespace vkinit {
   VkPipelineColorBlendAttachmentState colorBlendAttachmentState();
 
   VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo();
+
+  VkImageCreateInfo imageCreateInfo(
+    VkFormat format,
+    VkImageUsageFlags usageFlags,
+    VkExtent3D extent
+    );
+
+  VkImageViewCreateInfo imageviewCreateInfo(
+    VkFormat format,
+    VkImage image,
+    VkImageAspectFlags aspectFlags
+    );
+
+  VkPipelineDepthStencilStateCreateInfo depthStencilCreateInfo(
+    bool depthTest,
+    bool depthWrite,
+    VkCompareOp compareOp
+    );
+
+  VkRenderPassBeginInfo renderpassBeginInfo(
+    VkRenderPass renderPass,
+    VkExtent2D extent,
+    VkFramebuffer framebuffer
+    );
 };
