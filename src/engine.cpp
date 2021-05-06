@@ -18,6 +18,9 @@
 #include <chrono>
 #include <fstream>
 #include <iostream>
+#include <string>
+#include <sstream>
+#include <iomanip>
 #include <math.h>
 #include <queue>
 #include <vector>
@@ -452,31 +455,50 @@ void Engine::initDescriptors() {
     vkDestroyDescriptorSetLayout(device, objectSetLayout, nullptr);
   });
 
+  cameraBuffer =
+      createBuffer(sizeof(GPUCameraData), VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT,
+                   VMA_MEMORY_USAGE_CPU_TO_GPU);
+
+  mainDeletionQueue.push_function([=]() {
+    vmaDestroyBuffer(allocator, cameraBuffer.buffer, cameraBuffer.allocation);
+  });
+
+  VkDescriptorSetAllocateInfo globalAllocInfo{};
+  globalAllocInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO;
+  globalAllocInfo.pNext = nullptr;
+  globalAllocInfo.descriptorPool = descriptorPool;
+  globalAllocInfo.descriptorSetCount = 1;
+  globalAllocInfo.pSetLayouts = &globalSetLayout;
+
+  vkAllocateDescriptorSets(device, &globalAllocInfo, &globalDescriptor);
+
+  VkDescriptorBufferInfo cameraInfo{};
+  cameraInfo.buffer = cameraBuffer.buffer;
+  cameraInfo.offset = 0;
+  cameraInfo.range = sizeof(GPUCameraData);
+
+  VkDescriptorBufferInfo sceneInfo{};
+  sceneInfo.buffer = sceneParameterBuffer.buffer;
+  sceneInfo.offset = 0;
+  sceneInfo.range = sizeof(GPUSceneData);
+
+  VkWriteDescriptorSet cameraWrite = vkinit::writeDescriptorBuffer(
+      VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, globalDescriptor, &cameraInfo, 0);
+
+  VkWriteDescriptorSet sceneWrite =
+      vkinit::writeDescriptorBuffer(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC,
+                                    globalDescriptor, &sceneInfo, 1);
+
   for (uint32_t i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
     const int MAX_OBJECTS = 10000;
     frames[i].objectBuffer = createBuffer(sizeof(GPUObjectData) * MAX_OBJECTS,
                                           VK_BUFFER_USAGE_STORAGE_BUFFER_BIT,
                                           VMA_MEMORY_USAGE_CPU_TO_GPU);
 
-    frames[i].cameraBuffer =
-        createBuffer(sizeof(GPUCameraData), VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT,
-                     VMA_MEMORY_USAGE_CPU_TO_GPU);
     mainDeletionQueue.push_function([=]() {
-      vmaDestroyBuffer(allocator, frames[i].cameraBuffer.buffer,
-                       frames[i].cameraBuffer.allocation);
       vmaDestroyBuffer(allocator, frames[i].objectBuffer.buffer,
                        frames[i].objectBuffer.allocation);
     });
-
-    VkDescriptorSetAllocateInfo globalAllocInfo{};
-    globalAllocInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO;
-    globalAllocInfo.pNext = nullptr;
-    globalAllocInfo.descriptorPool = descriptorPool;
-    globalAllocInfo.descriptorSetCount = 1;
-    globalAllocInfo.pSetLayouts = &globalSetLayout;
-
-    vkAllocateDescriptorSets(device, &globalAllocInfo,
-                             &frames[i].globalDescriptor);
 
     VkDescriptorSetAllocateInfo objectSetAlloc{};
     objectSetAlloc.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO;
@@ -488,28 +510,10 @@ void Engine::initDescriptors() {
     vkAllocateDescriptorSets(device, &objectSetAlloc,
                              &frames[i].objectDescriptor);
 
-    VkDescriptorBufferInfo cameraInfo{};
-    cameraInfo.buffer = frames[i].cameraBuffer.buffer;
-    cameraInfo.offset = 0;
-    cameraInfo.range = sizeof(GPUCameraData);
-
-    VkDescriptorBufferInfo sceneInfo{};
-    sceneInfo.buffer = sceneParameterBuffer.buffer;
-    sceneInfo.offset = 0;
-    sceneInfo.range = sizeof(GPUSceneData);
-
     VkDescriptorBufferInfo objectBufferInfo{};
     objectBufferInfo.buffer = frames[i].objectBuffer.buffer;
     objectBufferInfo.offset = 0;
     objectBufferInfo.range = sizeof(GPUObjectData) * MAX_OBJECTS;
-
-    VkWriteDescriptorSet cameraWrite = vkinit::writeDescriptorBuffer(
-        VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, frames[i].globalDescriptor,
-        &cameraInfo, 0);
-
-    VkWriteDescriptorSet sceneWrite = vkinit::writeDescriptorBuffer(
-        VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC, frames[i].globalDescriptor,
-        &sceneInfo, 1);
 
     VkWriteDescriptorSet objectWrite = vkinit::writeDescriptorBuffer(
         VK_DESCRIPTOR_TYPE_STORAGE_BUFFER, frames[i].objectDescriptor,
@@ -750,29 +754,40 @@ void Engine::moveCamera(float dt) {
   mainCamera.position += mainCamera.velocity * dt;
 }
 
+void Engine::setSceneParameters(const float elapsedTime) {
+  const float t = elapsedTime / 2.0f;
+  sceneParameters.ambientColor = {sin(t), 0.0f, cos(t), 1.0f};
+}
+
 void Engine::run() {
   using namespace chrono;
+  typedef std::chrono::duration<float> fsec;
 
   constexpr float maxDeltaTime = 1 / 60.0f;
 
-  // static auto startTime = high_resolution_clock::now();
-  auto currentTime = high_resolution_clock::now();
-  // float elapsedTime = duration<float, seconds::period>(currentTime -
-  // startTime).count();
+  static auto startTime = high_resolution_clock::now();
+  auto oldTime = high_resolution_clock::now();
 
   while (!glfwWindowShouldClose(window)) {
     auto newTime = high_resolution_clock::now();
     float frameTime =
-        duration<float, seconds::period>(newTime - currentTime).count();
-    currentTime = newTime;
+        duration<float, seconds::period>(newTime - oldTime).count();
+    oldTime = newTime;
     float dt = std::min(frameTime, maxDeltaTime);
 
-    std::string fpsString = std::to_string(dt);
-    glfwSetWindowTitle(window, fpsString.data());
+    auto currentTime = high_resolution_clock::now();
+    float elapsedTime =
+        duration<float, seconds::period>(currentTime - startTime).count();
+
+    std::stringstream title;
+    title << "FPS: ";
+    title << std::fixed << std::setprecision(1) << 1/frameTime;
+    glfwSetWindowTitle(window, title.str().data());
 
     glfwPollEvents();
 
     moveCamera(dt);
+    setSceneParameters(elapsedTime);
 
     draw();
   }
@@ -808,13 +823,9 @@ void Engine::drawObjects(VkCommandBuffer cmd, RenderObject *first, int count) {
   camData.viewproj = projection * view;
 
   void *data;
-  vmaMapMemory(allocator, getCurrentFrame().cameraBuffer.allocation, &data);
+  vmaMapMemory(allocator, cameraBuffer.allocation, &data);
   memcpy(data, &camData, sizeof(GPUCameraData));
-  vmaUnmapMemory(allocator, getCurrentFrame().cameraBuffer.allocation);
-
-  float framed = (frameNumber / 120.0f);
-
-  sceneParameters.ambientColor = {sin(framed), 0.0f, cos(framed), 1.0f};
+  vmaUnmapMemory(allocator, cameraBuffer.allocation);
 
   void *objectData;
   vmaMapMemory(allocator, getCurrentFrame().objectBuffer.allocation,
@@ -850,13 +861,13 @@ void Engine::drawObjects(VkCommandBuffer cmd, RenderObject *first, int count) {
 
       uint32_t uniformOffset =
           padUniformBufferSize(sizeof(GPUSceneData)) * frameIndex;
-      vkCmdBindDescriptorSets(
-          cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, object.material->pipelineLayout,
-          0, 1, &getCurrentFrame().globalDescriptor, 1, &uniformOffset);
+      vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS,
+                              object.material->pipelineLayout, 0, 1,
+                              &globalDescriptor, 1, &uniformOffset);
 
-      vkCmdBindDescriptorSets(
-          cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, object.material->pipelineLayout,
-          1, 1, &getCurrentFrame().objectDescriptor, 0, nullptr);
+      vkCmdBindDescriptorSets(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS,
+                              object.material->pipelineLayout, 1, 1,
+                              &getCurrentFrame().objectDescriptor, 0, nullptr);
     }
 
     glm::mat4 model = object.model;

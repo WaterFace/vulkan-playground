@@ -31,10 +31,10 @@ struct GPUObjectData {
 };
 
 struct GPUSceneData {
-  glm::vec4 fogColor;
-  glm::vec4 fogDistances;
+  glm::vec4 fogColor; // w is for exponent
+  glm::vec4 fogDistances; // x is for min, y for max, zw unused
   glm::vec4 ambientColor;
-  glm::vec4 sunlightDirection;
+  glm::vec4 sunlightDirection; // w is for sun power
   glm::vec4 sunlightColor;
 };
 
@@ -44,9 +44,6 @@ struct FrameData {
 
   VkCommandPool commandPool;
   VkCommandBuffer commandBuffer;
-
-  AllocatedBuffer cameraBuffer;
-  VkDescriptorSet globalDescriptor;
 
   AllocatedBuffer objectBuffer;
   VkDescriptorSet objectDescriptor;
@@ -140,7 +137,11 @@ public:
   Camera mainCamera;
 
   VkDescriptorPool descriptorPool;
+
   VkDescriptorSetLayout globalSetLayout;
+  AllocatedBuffer cameraBuffer;
+  VkDescriptorSet globalDescriptor;
+
   VkDescriptorSetLayout objectSetLayout;
 
   GPUSceneData sceneParameters;
@@ -175,7 +176,8 @@ private:
   void drawObjects(VkCommandBuffer cmd, RenderObject *first, int count);
   bool loadShaderModule(const char *filePath, VkShaderModule *outShaderModule);
 
-  void moveCamera(float dt);
+  void moveCamera(const float dt);
+  void setSceneParameters(const float elapsedTime);
 };
 
 class PipelineBuilder {
