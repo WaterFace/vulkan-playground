@@ -2,10 +2,8 @@
 #include <vulkan/vulkan_core.h>
 
 VkCommandPoolCreateInfo vkinit::commandPoolCreateInfo(
-  uint32_t queueFamilyIndex,
-  VkCommandPoolCreateFlags flags /* = 0 */
-  ) 
-{
+    uint32_t queueFamilyIndex, VkCommandPoolCreateFlags flags /* = 0 */
+) {
   VkCommandPoolCreateInfo info{};
   info.sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO;
   info.pNext = nullptr;
@@ -15,11 +13,9 @@ VkCommandPoolCreateInfo vkinit::commandPoolCreateInfo(
 }
 
 VkCommandBufferAllocateInfo vkinit::commandBufferAllocateInfo(
-  VkCommandPool pool,
-  uint32_t count /* = 1 */,
-  VkCommandBufferLevel level /* = VK_COMMAND_BUFFER_LEVEL_PRIMARY */
-  ) 
-{
+    VkCommandPool pool, uint32_t count /* = 1 */,
+    VkCommandBufferLevel level /* = VK_COMMAND_BUFFER_LEVEL_PRIMARY */
+) {
   VkCommandBufferAllocateInfo info{};
   info.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
   info.pNext = nullptr;
@@ -29,11 +25,9 @@ VkCommandBufferAllocateInfo vkinit::commandBufferAllocateInfo(
   return info;
 }
 
-VkPipelineShaderStageCreateInfo vkinit::pipelineShaderStageCreateInfo(
-  VkShaderStageFlagBits stage,
-  VkShaderModule shaderModule
-  )
-{
+VkPipelineShaderStageCreateInfo
+vkinit::pipelineShaderStageCreateInfo(VkShaderStageFlagBits stage,
+                                      VkShaderModule shaderModule) {
   VkPipelineShaderStageCreateInfo info{};
   info.sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
   info.pNext = nullptr;
@@ -54,10 +48,8 @@ VkPipelineVertexInputStateCreateInfo vkinit::vertexInputStateCreateInfo() {
   return info;
 }
 
-VkPipelineInputAssemblyStateCreateInfo vkinit::inputAssemblyCreateInfo(
-  VkPrimitiveTopology topology
-  )
-{
+VkPipelineInputAssemblyStateCreateInfo
+vkinit::inputAssemblyCreateInfo(VkPrimitiveTopology topology) {
   VkPipelineInputAssemblyStateCreateInfo info{};
   info.sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
   info.pNext = nullptr;
@@ -67,10 +59,8 @@ VkPipelineInputAssemblyStateCreateInfo vkinit::inputAssemblyCreateInfo(
   return info;
 }
 
-VkPipelineRasterizationStateCreateInfo vkinit::rasterizationStateCreateInfo(
-  VkPolygonMode polygonMode
-  )
-{
+VkPipelineRasterizationStateCreateInfo
+vkinit::rasterizationStateCreateInfo(VkPolygonMode polygonMode) {
   VkPipelineRasterizationStateCreateInfo info{};
   info.sType = VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO;
   info.pNext = nullptr;
@@ -107,12 +97,9 @@ VkPipelineMultisampleStateCreateInfo vkinit::multisampleStateCreateInfo() {
 
 VkPipelineColorBlendAttachmentState vkinit::colorBlendAttachmentState() {
   VkPipelineColorBlendAttachmentState colorBlendAttachment{};
-  colorBlendAttachment.colorWriteMask = (
-    VK_COLOR_COMPONENT_R_BIT
-    | VK_COLOR_COMPONENT_G_BIT
-    | VK_COLOR_COMPONENT_B_BIT
-    | VK_COLOR_COMPONENT_A_BIT
-    );
+  colorBlendAttachment.colorWriteMask =
+      (VK_COLOR_COMPONENT_R_BIT | VK_COLOR_COMPONENT_G_BIT |
+       VK_COLOR_COMPONENT_B_BIT | VK_COLOR_COMPONENT_A_BIT);
   colorBlendAttachment.blendEnable = VK_FALSE;
   return colorBlendAttachment;
 }
@@ -130,12 +117,9 @@ VkPipelineLayoutCreateInfo vkinit::pipelineLayoutCreateInfo() {
   return info;
 }
 
-VkImageCreateInfo vkinit::imageCreateInfo(
-  VkFormat format,
-  VkImageUsageFlags usageFlags,
-  VkExtent3D extent
-  )
-{
+VkImageCreateInfo vkinit::imageCreateInfo(VkFormat format,
+                                          VkImageUsageFlags usageFlags,
+                                          VkExtent3D extent) {
   VkImageCreateInfo info{};
   info.sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO;
   info.pNext = nullptr;
@@ -154,12 +138,9 @@ VkImageCreateInfo vkinit::imageCreateInfo(
   return info;
 }
 
-VkImageViewCreateInfo vkinit::imageviewCreateInfo(
-  VkFormat format,
-  VkImage image,
-  VkImageAspectFlags aspectFlags
-  )
-{
+VkImageViewCreateInfo
+vkinit::imageviewCreateInfo(VkFormat format, VkImage image,
+                            VkImageAspectFlags aspectFlags) {
   VkImageViewCreateInfo info{};
   info.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
   info.pNext = nullptr;
@@ -176,12 +157,9 @@ VkImageViewCreateInfo vkinit::imageviewCreateInfo(
   return info;
 }
 
-VkPipelineDepthStencilStateCreateInfo vkinit::depthStencilCreateInfo(
-  bool depthTest,
-  bool depthWrite,
-  VkCompareOp compareOp
-  )
-{
+VkPipelineDepthStencilStateCreateInfo
+vkinit::depthStencilCreateInfo(bool depthTest, bool depthWrite,
+                               VkCompareOp compareOp) {
   VkPipelineDepthStencilStateCreateInfo info{};
   info.sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO;
   info.pNext = nullptr;
@@ -197,12 +175,9 @@ VkPipelineDepthStencilStateCreateInfo vkinit::depthStencilCreateInfo(
   return info;
 }
 
- VkRenderPassBeginInfo vkinit::renderpassBeginInfo(
-    VkRenderPass renderPass,
-    VkExtent2D extent,
-    VkFramebuffer framebuffer
-    )
-{
+VkRenderPassBeginInfo vkinit::renderpassBeginInfo(VkRenderPass renderPass,
+                                                  VkExtent2D extent,
+                                                  VkFramebuffer framebuffer) {
   VkRenderPassBeginInfo info{};
   info.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
   info.pNext = nullptr;
@@ -213,4 +188,32 @@ VkPipelineDepthStencilStateCreateInfo vkinit::depthStencilCreateInfo(
   info.framebuffer = framebuffer;
 
   return info;
+}
+
+VkDescriptorSetLayoutBinding vkinit::descriptorsetLayoutBinding(
+    VkDescriptorType type, VkShaderStageFlags stageFlags, uint32_t binding) {
+  VkDescriptorSetLayoutBinding setBind{};
+  setBind.binding = binding;
+  setBind.descriptorCount = 1;
+  setBind.descriptorType = type;
+  setBind.pImmutableSamplers = nullptr;
+  setBind.stageFlags = stageFlags;
+
+  return setBind;
+}
+
+VkWriteDescriptorSet
+vkinit::writeDescriptorBuffer(VkDescriptorType type, VkDescriptorSet dstSet,
+                              VkDescriptorBufferInfo *bufferInfo,
+                              uint32_t binding) {
+  VkWriteDescriptorSet write{};
+  write.sType = VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET;
+  write.pNext = nullptr;
+  write.dstBinding = binding;
+  write.dstSet = dstSet;
+  write.descriptorCount = 1;
+  write.descriptorType = type;
+  write.pBufferInfo = bufferInfo;
+
+  return write;
 }

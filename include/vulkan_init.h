@@ -1,62 +1,55 @@
 #pragma once
 
 #include "types.h"
+#include <stdint.h>
 #include <vulkan/vulkan_core.h>
 
 namespace vkinit {
-  VkCommandPoolCreateInfo commandPoolCreateInfo(
-    uint32_t queueFamilyIndex,
-    VkCommandPoolResetFlags flags = 0
-    );
-  
-  VkCommandBufferAllocateInfo commandBufferAllocateInfo(
-    VkCommandPool pool,
-    uint32_t count = 1,
-    VkCommandBufferLevel level = VK_COMMAND_BUFFER_LEVEL_PRIMARY
-    );
+VkCommandPoolCreateInfo
+commandPoolCreateInfo(uint32_t queueFamilyIndex,
+                      VkCommandPoolResetFlags flags = 0);
 
-  VkPipelineShaderStageCreateInfo pipelineShaderStageCreateInfo(
-    VkShaderStageFlagBits stage,
-    VkShaderModule shaderModule
-    );
+VkCommandBufferAllocateInfo commandBufferAllocateInfo(
+    VkCommandPool pool, uint32_t count = 1,
+    VkCommandBufferLevel level = VK_COMMAND_BUFFER_LEVEL_PRIMARY);
 
-  VkPipelineVertexInputStateCreateInfo vertexInputStateCreateInfo();
+VkPipelineShaderStageCreateInfo
+pipelineShaderStageCreateInfo(VkShaderStageFlagBits stage,
+                              VkShaderModule shaderModule);
 
-  VkPipelineInputAssemblyStateCreateInfo inputAssemblyCreateInfo(
-    VkPrimitiveTopology topology
-    );
+VkPipelineVertexInputStateCreateInfo vertexInputStateCreateInfo();
 
-  VkPipelineRasterizationStateCreateInfo rasterizationStateCreateInfo(
-    VkPolygonMode polygonMode
-    );
+VkPipelineInputAssemblyStateCreateInfo
+inputAssemblyCreateInfo(VkPrimitiveTopology topology);
 
-  VkPipelineMultisampleStateCreateInfo multisampleStateCreateInfo();
+VkPipelineRasterizationStateCreateInfo
+rasterizationStateCreateInfo(VkPolygonMode polygonMode);
 
-  VkPipelineColorBlendAttachmentState colorBlendAttachmentState();
+VkPipelineMultisampleStateCreateInfo multisampleStateCreateInfo();
 
-  VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo();
+VkPipelineColorBlendAttachmentState colorBlendAttachmentState();
 
-  VkImageCreateInfo imageCreateInfo(
-    VkFormat format,
-    VkImageUsageFlags usageFlags,
-    VkExtent3D extent
-    );
+VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo();
 
-  VkImageViewCreateInfo imageviewCreateInfo(
-    VkFormat format,
-    VkImage image,
-    VkImageAspectFlags aspectFlags
-    );
+VkImageCreateInfo imageCreateInfo(VkFormat format, VkImageUsageFlags usageFlags,
+                                  VkExtent3D extent);
 
-  VkPipelineDepthStencilStateCreateInfo depthStencilCreateInfo(
-    bool depthTest,
-    bool depthWrite,
-    VkCompareOp compareOp
-    );
+VkImageViewCreateInfo imageviewCreateInfo(VkFormat format, VkImage image,
+                                          VkImageAspectFlags aspectFlags);
 
-  VkRenderPassBeginInfo renderpassBeginInfo(
-    VkRenderPass renderPass,
-    VkExtent2D extent,
-    VkFramebuffer framebuffer
-    );
-};
+VkPipelineDepthStencilStateCreateInfo
+depthStencilCreateInfo(bool depthTest, bool depthWrite, VkCompareOp compareOp);
+
+VkRenderPassBeginInfo renderpassBeginInfo(VkRenderPass renderPass,
+                                          VkExtent2D extent,
+                                          VkFramebuffer framebuffer);
+
+VkDescriptorSetLayoutBinding
+descriptorsetLayoutBinding(VkDescriptorType type, VkShaderStageFlags stageFlags,
+                           uint32_t binding);
+
+VkWriteDescriptorSet writeDescriptorBuffer(VkDescriptorType type,
+                                           VkDescriptorSet dstSet,
+                                           VkDescriptorBufferInfo *bufferInfo,
+                                           uint32_t binding);
+}; // namespace vkinit

@@ -4,11 +4,11 @@
 
 #include "vk_mem_alloc.h"
 
-#include <vector>
-#include <functional>
 #include <deque>
-#include <unordered_map>
+#include <functional>
 #include <string>
+#include <unordered_map>
+#include <vector>
 
 #include <glm/glm.hpp>
 #include <vulkan/vulkan_core.h>
@@ -20,6 +20,38 @@ struct Camera {
   glm::vec3 velocity;
 };
 
+struct GPUCameraData {
+  glm::mat4 view;
+  glm::mat4 projection;
+  glm::mat4 viewproj;
+};
+
+struct GPUObjectData {
+  glm::mat4 model;
+};
+
+struct GPUSceneData {
+  glm::vec4 fogColor;
+  glm::vec4 fogDistances;
+  glm::vec4 ambientColor;
+  glm::vec4 sunlightDirection;
+  glm::vec4 sunlightColor;
+};
+
+struct FrameData {
+  VkSemaphore presentSemaphore, renderSemaphore;
+  VkFence renderFence;
+
+  VkCommandPool commandPool;
+  VkCommandBuffer commandBuffer;
+
+  AllocatedBuffer cameraBuffer;
+  VkDescriptorSet globalDescriptor;
+
+  AllocatedBuffer objectBuffer;
+  VkDescriptorSet objectDescriptor;
+};
+
 struct Material {
   // these are pointers internally, materials don't
   // carry the entire pipeline with them
@@ -28,8 +60,8 @@ struct Material {
 };
 
 struct RenderObject {
-  Mesh* mesh;
-  Material* material;
+  Mesh *mesh;
+  Material *material;
   glm::mat4 model;
 };
 
@@ -41,7 +73,7 @@ struct MeshPushConstants {
 struct DeletionQueue {
   std::deque<std::function<void()>> deletors;
 
-  void push_function(std::function<void()>&& function) {
+  void push_function(std::function<void()> &&function) {
     deletors.push_back(function);
   }
 
@@ -53,14 +85,16 @@ struct DeletionQueue {
   }
 };
 
+constexpr uint32_t MAX_FRAMES_IN_FLIGHT = 2;
+
 class Engine {
 public:
   bool isInitialized = false;
   int frameNumber = 0;
 
-  VkExtent2D windowExtent{ 1024, 768 };
+  VkExtent2D windowExtent{1024, 768};
 
-  struct GLFWwindow* window{ nullptr };
+  struct GLFWwindow *window{nullptr};
 
   void init();
   void cleanup();
@@ -70,6 +104,7 @@ public:
   VkInstance instance;
   VkDebugUtilsMessengerEXT debugMessenger;
   VkPhysicalDevice physicalDevice;
+  VkPhysicalDeviceProperties physicalDeviceProperties;
   VkDevice device;
   VkSurfaceKHR surface;
 
@@ -81,19 +116,11 @@ public:
   VkQueue graphicsQueue;
   uint32_t graphicsQueueFamily;
 
-  VkCommandPool commandPool;
-  VkCommandBuffer mainCommandBuffer;
-
   VkRenderPass renderPass;
   std::vector<VkFramebuffer> framebuffers;
 
-  VkSemaphore presentSemaphore, renderSemaphore;
-  VkFence renderFence;
-
   VkPipelineLayout meshPipelineLayout;
   VkPipeline meshPipeline;
-
-  int selectedShader{ 0 };
 
   DeletionQueue mainDeletionQueue;
 
@@ -108,7 +135,16 @@ public:
   AllocatedImage depthImage;
   VkFormat depthFormat;
 
+  FrameData frames[MAX_FRAMES_IN_FLIGHT];
+
   Camera mainCamera;
+
+  VkDescriptorPool descriptorPool;
+  VkDescriptorSetLayout globalSetLayout;
+  VkDescriptorSetLayout objectSetLayout;
+
+  GPUSceneData sceneParameters;
+  AllocatedBuffer sceneParameterBuffer;
 
 private:
   void initVulkan();
@@ -119,19 +155,25 @@ private:
   void initSyncStructures();
   void initPipelines();
   void initScene();
+  void initDescriptors();
   void loadMeshes();
-  void uploadMesh(Mesh& mesh);
-  Material* createMaterial(
-    VkPipeline pipeline,
-    VkPipelineLayout layout,
-    const std::string& name
-    );
-  // these return nullptr if it can't be found
-  Material* getMaterial(const std::string& name);
-  Mesh* getMesh(const std::string& name);
 
-  void drawObjects(VkCommandBuffer cmd, RenderObject* first, int count);
-  bool loadShaderModule(const char* filePath, VkShaderModule* outShaderModule);
+  FrameData &getCurrentFrame();
+
+  AllocatedBuffer createBuffer(size_t allocSize, VkBufferUsageFlags usage,
+                               VmaMemoryUsage memoryUsage);
+
+  size_t padUniformBufferSize(size_t originalSize);
+
+  void uploadMesh(Mesh &mesh);
+  Material *createMaterial(VkPipeline pipeline, VkPipelineLayout layout,
+                           const std::string &name);
+  // these return nullptr if it can't be found
+  Material *getMaterial(const std::string &name);
+  Mesh *getMesh(const std::string &name);
+
+  void drawObjects(VkCommandBuffer cmd, RenderObject *first, int count);
+  bool loadShaderModule(const char *filePath, VkShaderModule *outShaderModule);
 
   void moveCamera(float dt);
 };

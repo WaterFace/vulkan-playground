@@ -146,6 +146,8 @@ void Engine::init() {
   initFramebuffers();
   std::cout << "initializing sync objects" << std::endl;
   initSyncStructures();
+  std::cout << "initializing descriptors" << std::endl;
+  initDescriptors();
   std::cout << "initializing pipeline" << std::endl;
   initPipelines();
   std::cout << "loading meshes" << std::endl;
@@ -191,6 +193,11 @@ void Engine::initVulkan() {
   allocatorInfo.device = device;
   allocatorInfo.instance = instance;
   vmaCreateAllocator(&allocatorInfo, &allocator);
+
+  vkGetPhysicalDeviceProperties(physicalDevice, &physicalDeviceProperties);
+  std::cout << "The GPU has a minimum buffer alighment of "
+            << physicalDeviceProperties.limits.minUniformBufferOffsetAlignment
+            << std::endl;
 }
 
 void Engine::initSwapchain() {
@@ -242,14 +249,20 @@ void Engine::initCommands() {
   auto poolInfo = vkinit::commandPoolCreateInfo(
       graphicsQueueFamily, VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT);
 
-  VK_CHECK(vkCreateCommandPool(device, &poolInfo, nullptr, &commandPool));
+  for (uint32_t i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
+    VK_CHECK(vkCreateCommandPool(device, &poolInfo, nullptr,
+                                 &frames[i].commandPool));
 
-  auto allocInfo = vkinit::commandBufferAllocateInfo(commandPool, 1);
+    auto allocInfo =
+        vkinit::commandBufferAllocateInfo(frames[i].commandPool, 1);
 
-  VK_CHECK(vkAllocateCommandBuffers(device, &allocInfo, &mainCommandBuffer));
+    VK_CHECK(
+        vkAllocateCommandBuffers(device, &allocInfo, &frames[i].commandBuffer));
 
-  mainDeletionQueue.push_function(
-      [=]() { vkDestroyCommandPool(device, commandPool, nullptr); });
+    mainDeletionQueue.push_function([=]() {
+      vkDestroyCommandPool(device, frames[i].commandPool, nullptr);
+    });
+  }
 }
 
 void Engine::initDefaultRenderpass() {
@@ -345,41 +358,182 @@ void Engine::initSyncStructures() {
   fenceInfo.pNext = nullptr;
   fenceInfo.flags = VK_FENCE_CREATE_SIGNALED_BIT;
 
-  VK_CHECK(vkCreateFence(device, &fenceInfo, nullptr, &renderFence));
+  for (uint32_t i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
+    VK_CHECK(
+        vkCreateFence(device, &fenceInfo, nullptr, &frames[i].renderFence));
+
+    mainDeletionQueue.push_function(
+        [=]() { vkDestroyFence(device, frames[i].renderFence, nullptr); });
+
+    VkSemaphoreCreateInfo semaphoreInfo{};
+    semaphoreInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
+    semaphoreInfo.pNext = nullptr;
+    semaphoreInfo.flags = 0;
+
+    VK_CHECK(vkCreateSemaphore(device, &semaphoreInfo, nullptr,
+                               &frames[i].presentSemaphore));
+    VK_CHECK(vkCreateSemaphore(device, &semaphoreInfo, nullptr,
+                               &frames[i].renderSemaphore));
+
+    mainDeletionQueue.push_function([=]() {
+      vkDestroySemaphore(device, frames[i].presentSemaphore, nullptr);
+      vkDestroySemaphore(device, frames[i].renderSemaphore, nullptr);
+    });
+  }
+}
+
+void Engine::initDescriptors() {
+  vector<VkDescriptorPoolSize> sizes = {
+      {VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, 10},
+      {VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC, 10},
+      {VK_DESCRIPTOR_TYPE_STORAGE_BUFFER, 10},
+  };
+
+  VkDescriptorPoolCreateInfo poolInfo{};
+  poolInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO;
+  poolInfo.flags = 0;
+  poolInfo.maxSets = 10;
+  poolInfo.poolSizeCount = (uint32_t)sizes.size();
+  poolInfo.pPoolSizes = sizes.data();
+
+  vkCreateDescriptorPool(device, &poolInfo, nullptr, &descriptorPool);
 
   mainDeletionQueue.push_function(
-      [=]() { vkDestroyFence(device, renderFence, nullptr); });
+      [=]() { vkDestroyDescriptorPool(device, descriptorPool, nullptr); });
 
-  VkSemaphoreCreateInfo semaphoreInfo{};
-  semaphoreInfo.sType = VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO;
-  semaphoreInfo.pNext = nullptr;
-  semaphoreInfo.flags = 0;
-
-  VK_CHECK(
-      vkCreateSemaphore(device, &semaphoreInfo, nullptr, &presentSemaphore));
-  VK_CHECK(
-      vkCreateSemaphore(device, &semaphoreInfo, nullptr, &renderSemaphore));
+  const size_t sceneParamBufferSize =
+      MAX_FRAMES_IN_FLIGHT * padUniformBufferSize(sizeof(GPUSceneData));
+  sceneParameterBuffer =
+      createBuffer(sceneParamBufferSize, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT,
+                   VMA_MEMORY_USAGE_CPU_TO_GPU);
 
   mainDeletionQueue.push_function([=]() {
-    vkDestroySemaphore(device, presentSemaphore, nullptr);
-    vkDestroySemaphore(device, renderSemaphore, nullptr);
+    vmaDestroyBuffer(allocator, sceneParameterBuffer.buffer,
+                     sceneParameterBuffer.allocation);
   });
+
+  VkDescriptorSetLayoutBinding camBufferBinding =
+      vkinit::descriptorsetLayoutBinding(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER,
+                                         VK_SHADER_STAGE_VERTEX_BIT, 0);
+
+  VkDescriptorSetLayoutBinding sceneBinding =
+      vkinit::descriptorsetLayoutBinding(
+          VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC,
+          VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT, 1);
+
+  VkDescriptorSetLayoutBinding bindings[] = {camBufferBinding, sceneBinding};
+
+  VkDescriptorSetLayoutCreateInfo setInfo{};
+  setInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
+  setInfo.pNext = nullptr;
+
+  setInfo.bindingCount = 2;
+  setInfo.flags = 0;
+  setInfo.pBindings = bindings;
+
+  VK_CHECK(
+      vkCreateDescriptorSetLayout(device, &setInfo, nullptr, &globalSetLayout));
+
+  VkDescriptorSetLayoutBinding objectBind = vkinit::descriptorsetLayoutBinding(
+      VK_DESCRIPTOR_TYPE_STORAGE_BUFFER, VK_SHADER_STAGE_VERTEX_BIT, 0);
+
+  VkDescriptorSetLayoutCreateInfo set2Info{};
+  set2Info.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO;
+  set2Info.bindingCount = 1;
+  set2Info.flags = 0;
+  set2Info.pNext = nullptr;
+  set2Info.pBindings = &objectBind;
+
+  VK_CHECK(vkCreateDescriptorSetLayout(device, &set2Info, nullptr,
+                                       &objectSetLayout));
+
+  mainDeletionQueue.push_function([=]() {
+    vkDestroyDescriptorSetLayout(device, globalSetLayout, nullptr);
+    vkDestroyDescriptorSetLayout(device, objectSetLayout, nullptr);
+  });
+
+  for (uint32_t i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
+    const int MAX_OBJECTS = 10000;
+    frames[i].objectBuffer = createBuffer(sizeof(GPUObjectData) * MAX_OBJECTS,
+                                          VK_BUFFER_USAGE_STORAGE_BUFFER_BIT,
+                                          VMA_MEMORY_USAGE_CPU_TO_GPU);
+
+    frames[i].cameraBuffer =
+        createBuffer(sizeof(GPUCameraData), VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT,
+                     VMA_MEMORY_USAGE_CPU_TO_GPU);
+    mainDeletionQueue.push_function([=]() {
+      vmaDestroyBuffer(allocator, frames[i].cameraBuffer.buffer,
+                       frames[i].cameraBuffer.allocation);
+      vmaDestroyBuffer(allocator, frames[i].objectBuffer.buffer,
+                       frames[i].objectBuffer.allocation);
+    });
+
+    VkDescriptorSetAllocateInfo globalAllocInfo{};
+    globalAllocInfo.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO;
+    globalAllocInfo.pNext = nullptr;
+    globalAllocInfo.descriptorPool = descriptorPool;
+    globalAllocInfo.descriptorSetCount = 1;
+    globalAllocInfo.pSetLayouts = &globalSetLayout;
+
+    vkAllocateDescriptorSets(device, &globalAllocInfo,
+                             &frames[i].globalDescriptor);
+
+    VkDescriptorSetAllocateInfo objectSetAlloc{};
+    objectSetAlloc.sType = VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO;
+    objectSetAlloc.pNext = nullptr;
+    objectSetAlloc.descriptorPool = descriptorPool;
+    objectSetAlloc.descriptorSetCount = 1;
+    objectSetAlloc.pSetLayouts = &objectSetLayout;
+
+    vkAllocateDescriptorSets(device, &objectSetAlloc,
+                             &frames[i].objectDescriptor);
+
+    VkDescriptorBufferInfo cameraInfo{};
+    cameraInfo.buffer = frames[i].cameraBuffer.buffer;
+    cameraInfo.offset = 0;
+    cameraInfo.range = sizeof(GPUCameraData);
+
+    VkDescriptorBufferInfo sceneInfo{};
+    sceneInfo.buffer = sceneParameterBuffer.buffer;
+    sceneInfo.offset = 0;
+    sceneInfo.range = sizeof(GPUSceneData);
+
+    VkDescriptorBufferInfo objectBufferInfo{};
+    objectBufferInfo.buffer = frames[i].objectBuffer.buffer;
+    objectBufferInfo.offset = 0;
+    objectBufferInfo.range = sizeof(GPUObjectData) * MAX_OBJECTS;
+
+    VkWriteDescriptorSet cameraWrite = vkinit::writeDescriptorBuffer(
+        VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, frames[i].globalDescriptor,
+        &cameraInfo, 0);
+
+    VkWriteDescriptorSet sceneWrite = vkinit::writeDescriptorBuffer(
+        VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC, frames[i].globalDescriptor,
+        &sceneInfo, 1);
+
+    VkWriteDescriptorSet objectWrite = vkinit::writeDescriptorBuffer(
+        VK_DESCRIPTOR_TYPE_STORAGE_BUFFER, frames[i].objectDescriptor,
+        &objectBufferInfo, 0);
+
+    VkWriteDescriptorSet setWrites[] = {cameraWrite, sceneWrite, objectWrite};
+
+    vkUpdateDescriptorSets(device, 3, setWrites, 0, nullptr);
+  }
 }
 
 void Engine::initPipelines() {
-  VkShaderModule meshVertShader;
-  if (!loadShaderModule("shaders/triMesh.vert.spv", &meshVertShader)) {
-    cout << "Error when building the mesh vertex shader module" << endl;
+  VkShaderModule vertShader;
+  if (!loadShaderModule("shaders/shader.vert.spv", &vertShader)) {
+    cout << "Error when building the vertex shader module" << endl;
   } else {
-    cout << "Mesh vertex shader sucessfully loaded" << endl;
+    cout << "Vertex shader sucessfully loaded" << endl;
   }
 
-  VkShaderModule rgbTriangleFragShader;
-  if (!loadShaderModule("shaders/rgb_triangle.frag.spv",
-                        &rgbTriangleFragShader)) {
-    std::cout << "Failed to load RGB triangle fragment shader" << std::endl;
+  VkShaderModule fragShader;
+  if (!loadShaderModule("shaders/shader.frag.spv", &fragShader)) {
+    std::cout << "Error when building the fragment shader module" << std::endl;
   } else {
-    std::cout << "RGB triangle fragment shader sucessfully loaded" << std::endl;
+    std::cout << "Fragment shader sucessfully loaded" << std::endl;
   }
 
   auto pipelineLayoutInfo = vkinit::pipelineLayoutCreateInfo();
@@ -391,6 +545,11 @@ void Engine::initPipelines() {
 
   pipelineLayoutInfo.pPushConstantRanges = &pushConstant;
   pipelineLayoutInfo.pushConstantRangeCount = 1;
+
+  VkDescriptorSetLayout setLayouts[] = {globalSetLayout, objectSetLayout};
+
+  pipelineLayoutInfo.setLayoutCount = 2;
+  pipelineLayoutInfo.pSetLayouts = setLayouts;
 
   VK_CHECK(vkCreatePipelineLayout(device, &pipelineLayoutInfo, nullptr,
                                   &meshPipelineLayout));
@@ -433,17 +592,17 @@ void Engine::initPipelines() {
       vertexDescription.bindings.size();
 
   pipelineBuilder.shaderStages.push_back(vkinit::pipelineShaderStageCreateInfo(
-      VK_SHADER_STAGE_VERTEX_BIT, meshVertShader));
+      VK_SHADER_STAGE_VERTEX_BIT, vertShader));
 
   pipelineBuilder.shaderStages.push_back(vkinit::pipelineShaderStageCreateInfo(
-      VK_SHADER_STAGE_FRAGMENT_BIT, rgbTriangleFragShader));
+      VK_SHADER_STAGE_FRAGMENT_BIT, fragShader));
 
   meshPipeline = pipelineBuilder.buildPipeline(device, renderPass);
 
   createMaterial(meshPipeline, meshPipelineLayout, "defaultmesh");
 
-  vkDestroyShaderModule(device, rgbTriangleFragShader, nullptr);
-  vkDestroyShaderModule(device, meshVertShader, nullptr);
+  vkDestroyShaderModule(device, fragShader, nullptr);
+  vkDestroyShaderModule(device, vertShader, nullptr);
 
   mainDeletionQueue.push_function([=]() {
     vkDestroyPipeline(device, meshPipeline, nullptr);
@@ -499,6 +658,40 @@ void Engine::loadMeshes() {
 
   meshes["triangle"] = triangleMesh;
   meshes["monkey"] = monkeyMesh;
+}
+
+AllocatedBuffer Engine::createBuffer(size_t allocSize, VkBufferUsageFlags usage,
+                                     VmaMemoryUsage memoryUsage) {
+  VkBufferCreateInfo bufferInfo{};
+  bufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
+  bufferInfo.pNext = nullptr;
+
+  bufferInfo.size = allocSize;
+  bufferInfo.usage = usage;
+
+  VmaAllocationCreateInfo vmaallocInfo{};
+  vmaallocInfo.usage = memoryUsage;
+
+  AllocatedBuffer newBuffer;
+
+  VK_CHECK(vmaCreateBuffer(allocator, &bufferInfo, &vmaallocInfo,
+                           &newBuffer.buffer, &newBuffer.allocation, nullptr));
+
+  return newBuffer;
+}
+
+size_t Engine::padUniformBufferSize(size_t originalSize) {
+  size_t minUboAlignment =
+      physicalDeviceProperties.limits.minUniformBufferOffsetAlignment;
+  size_t alignedSize = originalSize;
+  if (minUboAlignment > 0) {
+    alignedSize = (alignedSize + minUboAlignment - 1) & ~(minUboAlignment - 1);
+  }
+  return alignedSize;
+}
+
+FrameData &Engine::getCurrentFrame() {
+  return frames[frameNumber % MAX_FRAMES_IN_FLIGHT];
 }
 
 void Engine::uploadMesh(Mesh &mesh) {
@@ -560,7 +753,7 @@ void Engine::moveCamera(float dt) {
 void Engine::run() {
   using namespace chrono;
 
-  constexpr float maxDeltaTime = 1/60.0f;
+  constexpr float maxDeltaTime = 1 / 60.0f;
 
   // static auto startTime = high_resolution_clock::now();
   auto currentTime = high_resolution_clock::now();
@@ -577,7 +770,6 @@ void Engine::run() {
     std::string fpsString = std::to_string(dt);
     glfwSetWindowTitle(window, fpsString.data());
 
-
     glfwPollEvents();
 
     moveCamera(dt);
@@ -588,15 +780,15 @@ void Engine::run() {
 
 void Engine::cleanup() {
   if (isInitialized) {
-    vkWaitForFences(device, 1, &renderFence, VK_TRUE, UINT64_MAX);
+    vkDeviceWaitIdle(device);
 
     mainDeletionQueue.flush();
 
     vkDestroySurfaceKHR(instance, surface, nullptr);
 
-    vkb::destroy_debug_utils_messenger(instance, debugMessenger, nullptr);
     vmaDestroyAllocator(allocator);
     vkDestroyDevice(device, nullptr);
+    vkb::destroy_debug_utils_messenger(instance, debugMessenger, nullptr);
     vkDestroyInstance(instance, nullptr);
 
     glfwDestroyWindow(window);
@@ -610,6 +802,42 @@ void Engine::drawObjects(VkCommandBuffer cmd, RenderObject *first, int count) {
       0.1f, 200.0f);
   projection[1][1] *= -1;
 
+  GPUCameraData camData;
+  camData.projection = projection;
+  camData.view = view;
+  camData.viewproj = projection * view;
+
+  void *data;
+  vmaMapMemory(allocator, getCurrentFrame().cameraBuffer.allocation, &data);
+  memcpy(data, &camData, sizeof(GPUCameraData));
+  vmaUnmapMemory(allocator, getCurrentFrame().cameraBuffer.allocation);
+
+  float framed = (frameNumber / 120.0f);
+
+  sceneParameters.ambientColor = {sin(framed), 0.0f, cos(framed), 1.0f};
+
+  void *objectData;
+  vmaMapMemory(allocator, getCurrentFrame().objectBuffer.allocation,
+               &objectData);
+  GPUObjectData *objectSSBO = (GPUObjectData *)objectData;
+  for (int i = 0; i < count; i++) {
+    RenderObject &object = first[i];
+    objectSSBO[i].model = object.model;
+  }
+
+  vmaUnmapMemory(allocator, getCurrentFrame().objectBuffer.allocation);
+
+  char *sceneData;
+  vmaMapMemory(allocator, sceneParameterBuffer.allocation, (void **)&sceneData);
+
+  int frameIndex = frameNumber % MAX_FRAMES_IN_FLIGHT;
+
+  sceneData += padUniformBufferSize(sizeof(GPUSceneData));
+
+  memcpy(sceneData, &sceneParameters, sizeof(GPUSceneData));
+
+  vmaUnmapMemory(allocator, sceneParameterBuffer.allocation);
+
   Mesh *lastMesh = nullptr;
   Material *lastMaterial = nullptr;
   for (int i = 0; i < count; i++) {
@@ -619,13 +847,23 @@ void Engine::drawObjects(VkCommandBuffer cmd, RenderObject *first, int count) {
       vkCmdBindPipeline(cmd, VK_PIPELINE_BIND_POINT_GRAPHICS,
                         object.material->pipeline);
       lastMaterial = object.material;
+
+      uint32_t uniformOffset =
+          padUniformBufferSize(sizeof(GPUSceneData)) * frameIndex;
+      vkCmdBindDescriptorSets(
+          cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, object.material->pipelineLayout,
+          0, 1, &getCurrentFrame().globalDescriptor, 1, &uniformOffset);
+
+      vkCmdBindDescriptorSets(
+          cmd, VK_PIPELINE_BIND_POINT_GRAPHICS, object.material->pipelineLayout,
+          1, 1, &getCurrentFrame().objectDescriptor, 0, nullptr);
     }
 
     glm::mat4 model = object.model;
     glm::mat4 mvp = projection * view * model;
 
     MeshPushConstants constants;
-    constants.renderMatrix = mvp;
+    constants.renderMatrix = object.model;
 
     vkCmdPushConstants(cmd, object.material->pipelineLayout,
                        VK_SHADER_STAGE_VERTEX_BIT, 0, sizeof(MeshPushConstants),
@@ -637,20 +875,21 @@ void Engine::drawObjects(VkCommandBuffer cmd, RenderObject *first, int count) {
                              &offset);
       lastMesh = object.mesh;
     }
-    vkCmdDraw(cmd, object.mesh->vertices.size(), 1, 0, 0);
+    vkCmdDraw(cmd, object.mesh->vertices.size(), 1, 0, i);
   }
 }
 
 void Engine::draw() {
-  VK_CHECK(vkWaitForFences(device, 1, &renderFence, VK_TRUE, UINT64_MAX));
-  VK_CHECK(vkResetFences(device, 1, &renderFence));
+  VK_CHECK(vkWaitForFences(device, 1, &getCurrentFrame().renderFence, VK_TRUE,
+                           UINT64_MAX));
+  VK_CHECK(vkResetFences(device, 1, &getCurrentFrame().renderFence));
 
   uint32_t swapchainImageIndex;
   VK_CHECK(vkAcquireNextImageKHR(device, swapchain, UINT64_MAX,
-                                 presentSemaphore, nullptr,
+                                 getCurrentFrame().presentSemaphore, nullptr,
                                  &swapchainImageIndex));
 
-  VK_CHECK(vkResetCommandBuffer(mainCommandBuffer, 0));
+  VK_CHECK(vkResetCommandBuffer(getCurrentFrame().commandBuffer, 0));
 
   VkCommandBufferBeginInfo beginInfo{};
   beginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
@@ -658,7 +897,7 @@ void Engine::draw() {
   beginInfo.pInheritanceInfo = nullptr;
   beginInfo.flags = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT;
 
-  VK_CHECK(vkBeginCommandBuffer(mainCommandBuffer, &beginInfo));
+  VK_CHECK(vkBeginCommandBuffer(getCurrentFrame().commandBuffer, &beginInfo));
 
   VkClearValue clearValue;
   clearValue.color = {{0.0f, 0.0f, 0.0f, 1.0f}};
@@ -676,12 +915,14 @@ void Engine::draw() {
   rpInfo.clearValueCount = 2;
   rpInfo.pClearValues = &clearValues[0];
 
-  vkCmdBeginRenderPass(mainCommandBuffer, &rpInfo, VK_SUBPASS_CONTENTS_INLINE);
+  vkCmdBeginRenderPass(getCurrentFrame().commandBuffer, &rpInfo,
+                       VK_SUBPASS_CONTENTS_INLINE);
 
-  drawObjects(mainCommandBuffer, renderables.data(), renderables.size());
+  drawObjects(getCurrentFrame().commandBuffer, renderables.data(),
+              renderables.size());
 
-  vkCmdEndRenderPass(mainCommandBuffer);
-  VK_CHECK(vkEndCommandBuffer(mainCommandBuffer));
+  vkCmdEndRenderPass(getCurrentFrame().commandBuffer);
+  VK_CHECK(vkEndCommandBuffer(getCurrentFrame().commandBuffer));
 
   VkSubmitInfo submit = {};
   submit.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
@@ -693,15 +934,16 @@ void Engine::draw() {
   submit.pWaitDstStageMask = &waitStage;
 
   submit.waitSemaphoreCount = 1;
-  submit.pWaitSemaphores = &presentSemaphore;
+  submit.pWaitSemaphores = &getCurrentFrame().presentSemaphore;
 
   submit.signalSemaphoreCount = 1;
-  submit.pSignalSemaphores = &renderSemaphore;
+  submit.pSignalSemaphores = &getCurrentFrame().renderSemaphore;
 
   submit.commandBufferCount = 1;
-  submit.pCommandBuffers = &mainCommandBuffer;
+  submit.pCommandBuffers = &getCurrentFrame().commandBuffer;
 
-  VK_CHECK(vkQueueSubmit(graphicsQueue, 1, &submit, renderFence));
+  VK_CHECK(
+      vkQueueSubmit(graphicsQueue, 1, &submit, getCurrentFrame().renderFence));
 
   VkPresentInfoKHR presentInfo{};
   presentInfo.sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
@@ -710,7 +952,7 @@ void Engine::draw() {
   presentInfo.pSwapchains = &swapchain;
   presentInfo.swapchainCount = 1;
 
-  presentInfo.pWaitSemaphores = &renderSemaphore;
+  presentInfo.pWaitSemaphores = &getCurrentFrame().renderSemaphore;
   presentInfo.waitSemaphoreCount = 1;
 
   presentInfo.pImageIndices = &swapchainImageIndex;
