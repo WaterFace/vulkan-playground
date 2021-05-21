@@ -26,6 +26,7 @@ set(SOURCES
   src/engine.cpp
   src/vulkan_init.cpp
   src/vulkan_mesh.cpp
+  src/vulkan_textures.cpp
   src/types.cpp
   )
 

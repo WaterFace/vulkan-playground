@@ -10,7 +10,6 @@
 #include <unordered_map>
 #include <vector>
 
-#include <glm/glm.hpp>
 #include <vulkan/vulkan_core.h>
 
 #include "vulkan_mesh.h"
@@ -36,6 +35,16 @@ struct GPUSceneData {
   glm::vec4 ambientColor;
   glm::vec4 sunlightDirection; // w is for sun power
   glm::vec4 sunlightColor;
+};
+
+struct UploadContext {
+  VkFence uploadFence;
+  VkCommandPool commandPool;
+};
+
+struct Texture {
+  AllocatedImage image;
+  VkImageView imageView;
 };
 
 struct FrameData {
@@ -147,6 +156,16 @@ public:
   GPUSceneData sceneParameters;
   AllocatedBuffer sceneParameterBuffer;
 
+  UploadContext uploadContext;
+
+  std::unordered_map<std::string, Texture> loadedTextures;
+
+  AllocatedBuffer createBuffer(size_t allocSize, VkBufferUsageFlags usage,
+                               VmaMemoryUsage memoryUsage);
+
+  void immediateSubmit(std::function<void(VkCommandBuffer cmd)>&& function);
+  void loadImages();
+
 private:
   void initVulkan();
   void initSwapchain();
@@ -161,8 +180,6 @@ private:
 
   FrameData &getCurrentFrame();
 
-  AllocatedBuffer createBuffer(size_t allocSize, VkBufferUsageFlags usage,
-                               VmaMemoryUsage memoryUsage);
 
   size_t padUniformBufferSize(size_t originalSize);
 
@@ -175,6 +192,7 @@ private:
 
   void drawObjects(VkCommandBuffer cmd, RenderObject *first, int count);
   bool loadShaderModule(const char *filePath, VkShaderModule *outShaderModule);
+
 
   void moveCamera(const float dt);
   void setSceneParameters(const float elapsedTime);

@@ -12,14 +12,7 @@ bool Mesh::loadFromObj(const char *filename) {
   std::string warn;
   std::string err;
 
-  tinyobj::LoadObj(
-    &attrib,
-    &shapes,
-    &materials,
-    &warn,
-    &err,
-    filename
-    );
+  tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err, filename);
 
   if (!warn.empty()) {
     std::cout << "Mesh::loadFromObj: WARN: " << warn << std::endl;
@@ -39,13 +32,16 @@ bool Mesh::loadFromObj(const char *filename) {
       for (size_t v = 0; v < fv; v++) {
         tinyobj::index_t idx = shapes[s].mesh.indices[indexOffset + v];
 
-        tinyobj::real_t vx = attrib.vertices[3*idx.vertex_index + 0];
-        tinyobj::real_t vy = attrib.vertices[3*idx.vertex_index + 1];
-        tinyobj::real_t vz = attrib.vertices[3*idx.vertex_index + 2];
+        tinyobj::real_t vx = attrib.vertices[3 * idx.vertex_index + 0];
+        tinyobj::real_t vy = attrib.vertices[3 * idx.vertex_index + 1];
+        tinyobj::real_t vz = attrib.vertices[3 * idx.vertex_index + 2];
 
-        tinyobj::real_t nx = attrib.normals[3*idx.normal_index + 0];
-        tinyobj::real_t ny = attrib.normals[3*idx.normal_index + 1];
-        tinyobj::real_t nz = attrib.normals[3*idx.normal_index + 2];
+        tinyobj::real_t nx = attrib.normals[3 * idx.normal_index + 0];
+        tinyobj::real_t ny = attrib.normals[3 * idx.normal_index + 1];
+        tinyobj::real_t nz = attrib.normals[3 * idx.normal_index + 2];
+
+        tinyobj::real_t ux = attrib.texcoords[2 * idx.texcoord_index + 0];
+        tinyobj::real_t uy = attrib.texcoords[2 * idx.texcoord_index + 1];
 
         Vertex newVert;
         newVert.position.x = vx;
@@ -55,6 +51,9 @@ bool Mesh::loadFromObj(const char *filename) {
         newVert.normal.x = nx;
         newVert.normal.y = ny;
         newVert.normal.z = nz;
+
+        newVert.uv.x = ux;
+        newVert.uv.y = 1-uy;
 
         newVert.color = newVert.normal; // just for display purposes
 
@@ -95,9 +94,16 @@ VertexInputDescription Vertex::getVertexDescription() {
   colorAttribute.format = VK_FORMAT_R32G32B32_SFLOAT;
   colorAttribute.offset = offsetof(Vertex, color);
 
+  VkVertexInputAttributeDescription uvAttribute{};
+  uvAttribute.binding = 0;
+  uvAttribute.location = 3;
+  uvAttribute.format = VK_FORMAT_R32G32_SFLOAT;
+  uvAttribute.offset = offsetof(Vertex, uv);
+
   description.attributes.push_back(positionAttribute);
   description.attributes.push_back(normalAttribute);
   description.attributes.push_back(colorAttribute);
+  description.attributes.push_back(uvAttribute);
 
   return description;
 }

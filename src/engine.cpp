@@ -1,4 +1,6 @@
 #include "engine.h"
+#include "vulkan_textures.h"
+#include <stdint.h>
 #include <string>
 #include <vulkan/vulkan_core.h>
 
@@ -17,12 +19,12 @@
 
 #include <chrono>
 #include <fstream>
-#include <iostream>
-#include <string>
-#include <sstream>
 #include <iomanip>
+#include <iostream>
 #include <math.h>
 #include <queue>
+#include <sstream>
+#include <string>
 #include <vector>
 
 // this is fine, we're not in a header
@@ -153,6 +155,8 @@ void Engine::init() {
   initDescriptors();
   std::cout << "initializing pipeline" << std::endl;
   initPipelines();
+  std::cout << "loading images" << std::endl;
+  loadImages();
   std::cout << "loading meshes" << std::endl;
   loadMeshes();
   std::cout << "initializing scene" << std::endl;
@@ -266,6 +270,14 @@ void Engine::initCommands() {
       vkDestroyCommandPool(device, frames[i].commandPool, nullptr);
     });
   }
+
+  auto uploadCommandPoolInfo =
+      vkinit::commandPoolCreateInfo(graphicsQueueFamily);
+  VK_CHECK(vkCreateCommandPool(device, &uploadCommandPoolInfo, nullptr,
+                               &uploadContext.commandPool));
+  mainDeletionQueue.push_function([=]() {
+    vkDestroyCommandPool(device, uploadContext.commandPool, nullptr);
+  });
 }
 
 void Engine::initDefaultRenderpass() {
@@ -356,14 +368,12 @@ void Engine::initFramebuffers() {
 }
 
 void Engine::initSyncStructures() {
-  VkFenceCreateInfo fenceInfo{};
-  fenceInfo.sType = VK_STRUCTURE_TYPE_FENCE_CREATE_INFO;
-  fenceInfo.pNext = nullptr;
-  fenceInfo.flags = VK_FENCE_CREATE_SIGNALED_BIT;
+  VkFenceCreateInfo renderFenceInfo = vkinit::fenceCreateInfo();
+  renderFenceInfo.flags = VK_FENCE_CREATE_SIGNALED_BIT;
 
   for (uint32_t i = 0; i < MAX_FRAMES_IN_FLIGHT; i++) {
-    VK_CHECK(
-        vkCreateFence(device, &fenceInfo, nullptr, &frames[i].renderFence));
+    VK_CHECK(vkCreateFence(device, &renderFenceInfo, nullptr,
+                           &frames[i].renderFence));
 
     mainDeletionQueue.push_function(
         [=]() { vkDestroyFence(device, frames[i].renderFence, nullptr); });
@@ -383,6 +393,13 @@ void Engine::initSyncStructures() {
       vkDestroySemaphore(device, frames[i].renderSemaphore, nullptr);
     });
   }
+
+  VkFenceCreateInfo uploadFenceInfo = vkinit::fenceCreateInfo();
+
+  VK_CHECK(vkCreateFence(device, &uploadFenceInfo, nullptr,
+                         &uploadContext.uploadFence));
+  mainDeletionQueue.push_function(
+      [=]() { vkDestroyFence(device, uploadContext.uploadFence, nullptr); });
 }
 
 void Engine::initDescriptors() {
@@ -699,27 +716,57 @@ FrameData &Engine::getCurrentFrame() {
 }
 
 void Engine::uploadMesh(Mesh &mesh) {
-  VkBufferCreateInfo bufferInfo{};
-  bufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
-  bufferInfo.size = mesh.vertices.size() * sizeof(Vertex);
-  bufferInfo.usage = VK_BUFFER_USAGE_VERTEX_BUFFER_BIT;
+  const size_t bufferSize = mesh.vertices.size() * sizeof(Vertex);
+
+  VkBufferCreateInfo stagingBufferInfo{};
+  stagingBufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
+  stagingBufferInfo.pNext = nullptr;
+
+  stagingBufferInfo.size = bufferSize;
+  stagingBufferInfo.usage = VK_BUFFER_USAGE_TRANSFER_SRC_BIT;
 
   VmaAllocationCreateInfo vmaallocInfo{};
-  vmaallocInfo.usage = VMA_MEMORY_USAGE_CPU_TO_GPU;
+  vmaallocInfo.usage = VMA_MEMORY_USAGE_CPU_ONLY;
 
-  VK_CHECK(vmaCreateBuffer(allocator, &bufferInfo, &vmaallocInfo,
+  AllocatedBuffer stagingBuffer;
+
+  VK_CHECK(vmaCreateBuffer(allocator, &stagingBufferInfo, &vmaallocInfo,
+                           &stagingBuffer.buffer, &stagingBuffer.allocation,
+                           nullptr));
+
+  void *data;
+  vmaMapMemory(allocator, stagingBuffer.allocation, &data);
+  memcpy(data, mesh.vertices.data(), mesh.vertices.size() * sizeof(Vertex));
+  vmaUnmapMemory(allocator, stagingBuffer.allocation);
+
+  VkBufferCreateInfo vertexBufferInfo{};
+  vertexBufferInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
+  vertexBufferInfo.pNext = nullptr;
+
+  vertexBufferInfo.size = bufferSize;
+  vertexBufferInfo.usage =
+      VK_BUFFER_USAGE_VERTEX_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_DST_BIT;
+
+  vmaallocInfo.usage = VMA_MEMORY_USAGE_GPU_ONLY;
+
+  VK_CHECK(vmaCreateBuffer(allocator, &vertexBufferInfo, &vmaallocInfo,
                            &mesh.vertexBuffer.buffer,
                            &mesh.vertexBuffer.allocation, nullptr));
+
+  immediateSubmit([&](VkCommandBuffer cmd) {
+    VkBufferCopy copy;
+    copy.dstOffset = 0;
+    copy.srcOffset = 0;
+    copy.size = bufferSize;
+    vkCmdCopyBuffer(cmd, stagingBuffer.buffer, mesh.vertexBuffer.buffer, 1,
+                    &copy);
+  });
 
   mainDeletionQueue.push_function([=]() {
     vmaDestroyBuffer(allocator, mesh.vertexBuffer.buffer,
                      mesh.vertexBuffer.allocation);
   });
-
-  void *data;
-  vmaMapMemory(allocator, mesh.vertexBuffer.allocation, &data);
-  memcpy(data, mesh.vertices.data(), mesh.vertices.size() * sizeof(Vertex));
-  vmaUnmapMemory(allocator, mesh.vertexBuffer.allocation);
+  vmaDestroyBuffer(allocator, stagingBuffer.buffer, stagingBuffer.allocation);
 }
 
 Material *Engine::createMaterial(VkPipeline pipeline, VkPipelineLayout layout,
@@ -763,7 +810,7 @@ void Engine::run() {
   using namespace chrono;
   typedef std::chrono::duration<float> fsec;
 
-  constexpr float maxDeltaTime = 1 / 60.0f;
+  constexpr float maxDeltaTime = 1 / 10.0f;
 
   static auto startTime = high_resolution_clock::now();
   auto oldTime = high_resolution_clock::now();
@@ -781,7 +828,7 @@ void Engine::run() {
 
     std::stringstream title;
     title << "FPS: ";
-    title << std::fixed << std::setprecision(1) << 1/frameTime;
+    title << std::fixed << std::setprecision(2) << elapsedTime;
     glfwSetWindowTitle(window, title.str().data());
 
     glfwPollEvents();
@@ -902,11 +949,8 @@ void Engine::draw() {
 
   VK_CHECK(vkResetCommandBuffer(getCurrentFrame().commandBuffer, 0));
 
-  VkCommandBufferBeginInfo beginInfo{};
-  beginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
-  beginInfo.pNext = nullptr;
-  beginInfo.pInheritanceInfo = nullptr;
-  beginInfo.flags = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT;
+  VkCommandBufferBeginInfo beginInfo = vkinit::commandBufferBeginInfo(
+      VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT);
 
   VK_CHECK(vkBeginCommandBuffer(getCurrentFrame().commandBuffer, &beginInfo));
 
@@ -1019,4 +1063,48 @@ VkPipeline PipelineBuilder::buildPipeline(VkDevice device, VkRenderPass pass) {
   } else {
     return newPipeline;
   }
+}
+
+void Engine::immediateSubmit(
+    std::function<void(VkCommandBuffer cmd)> &&function) {
+  auto cmdAllocInfo =
+      vkinit::commandBufferAllocateInfo(uploadContext.commandPool);
+
+  VkCommandBuffer cmd;
+  VK_CHECK(vkAllocateCommandBuffers(device, &cmdAllocInfo, &cmd));
+
+  auto cmdBeginInfo = vkinit::commandBufferBeginInfo(
+      VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT);
+
+  VK_CHECK(vkBeginCommandBuffer(cmd, &cmdBeginInfo));
+
+  function(cmd);
+
+  VK_CHECK(vkEndCommandBuffer(cmd));
+
+  VkSubmitInfo submitInfo = vkinit::submitInfo(&cmd);
+
+  VK_CHECK(
+      vkQueueSubmit(graphicsQueue, 1, &submitInfo, uploadContext.uploadFence));
+
+  vkWaitForFences(device, 1, &uploadContext.uploadFence, VK_TRUE, UINT64_MAX);
+  vkResetFences(device, 1, &uploadContext.uploadFence);
+
+  vkResetCommandPool(device, uploadContext.commandPool, 0);
+}
+
+void Engine::loadImages() {
+  Texture statue;
+
+  vkutil::loadImageFromFile(*this, "textures/statue.png", statue.image);
+
+  VkImageViewCreateInfo imageInfo = vkinit::imageviewCreateInfo(
+      VK_FORMAT_R8G8B8A8_SRGB, statue.image.image, VK_IMAGE_ASPECT_COLOR_BIT);
+  VK_CHECK(vkCreateImageView(device, &imageInfo, nullptr, &statue.imageView));
+
+  mainDeletionQueue.push_function([=]() {
+    vkDestroyImageView(device, statue.imageView, nullptr);
+  });
+
+  loadedTextures["statue_diffuse"] = statue;
 }

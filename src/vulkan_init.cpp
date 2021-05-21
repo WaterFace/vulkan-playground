@@ -25,6 +25,17 @@ VkCommandBufferAllocateInfo vkinit::commandBufferAllocateInfo(
   return info;
 }
 
+VkCommandBufferBeginInfo
+vkinit::commandBufferBeginInfo(VkCommandBufferUsageFlags flags) {
+  VkCommandBufferBeginInfo info{};
+  info.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
+  info.pNext = nullptr;
+  info.pInheritanceInfo = nullptr;
+  info.flags = flags;
+
+  return info;
+}
+
 VkPipelineShaderStageCreateInfo
 vkinit::pipelineShaderStageCreateInfo(VkShaderStageFlagBits stage,
                                       VkShaderModule shaderModule) {
@@ -216,4 +227,28 @@ vkinit::writeDescriptorBuffer(VkDescriptorType type, VkDescriptorSet dstSet,
   write.pBufferInfo = bufferInfo;
 
   return write;
+}
+
+VkFenceCreateInfo vkinit::fenceCreateInfo() {
+  VkFenceCreateInfo info{};
+  info.sType = VK_STRUCTURE_TYPE_FENCE_CREATE_INFO;
+  info.pNext = nullptr;
+
+  return info;
+}
+
+VkSubmitInfo vkinit::submitInfo(VkCommandBuffer *cmd) {
+  VkSubmitInfo info = {};
+  info.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
+  info.pNext = nullptr;
+
+  info.waitSemaphoreCount = 0;
+  info.pWaitSemaphores = nullptr;
+  info.pWaitDstStageMask = nullptr;
+  info.commandBufferCount = 1;
+  info.pCommandBuffers = cmd;
+  info.signalSemaphoreCount = 0;
+  info.pSignalSemaphores = nullptr;
+
+  return info;
 }
